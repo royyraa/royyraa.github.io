@@ -2,16 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rajarshi Roy | Computational Biophysicist</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; line-height: 1.6; background: #f4f4f4; color: #333; }
-    header { background: #222; color: #fff; padding: 2rem; text-align: center; }
-    section { padding: 2rem; background: white; margin: 1rem auto; max-width: 900px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-    h1, h2, h3 { margin-top: 0; }
-    ul { padding-left: 1.2rem; }
-    a { color: #007acc; text-decoration: none; }
-    footer { text-align: center; padding: 1rem; font-size: 0.9em; background: #eee; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Roboto', sans-serif; line-height: 1.6; background: #f9f9f9; color: #333; }
+    header { background: #222; color: #fff; padding: 2rem 1rem; text-align: center; }
+    header h1 { font-size: 2.5rem; }
+    nav { position: sticky; top: 0; background: #444; padding: 0.5rem 0; text-align: center; z-index: 1000; }
+    nav a { color: #fff; margin: 0 1rem; text-decoration: none; font-weight: bold; }
+    nav a:hover { text-decoration: underline; }
+    section { padding: 2rem 1rem; max-width: 900px; margin: auto; background: white; margin-top: 1rem; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    h2 { color: #007acc; margin-bottom: 1rem; }
+    ul { padding-left: 1.5rem; }
+    a { color: #007acc; }
+    .dark-mode { background: #1e1e1e; color: #ccc; }
+    .dark-mode header, .dark-mode nav { background: #111; color: white; }
+    .dark-mode section { background: #2a2a2a; }
+    .toggle-btn { position: fixed; bottom: 1rem; right: 1rem; padding: 0.5rem 1rem; background: #007acc; color: white; border: none; cursor: pointer; border-radius: 5px; }
   </style>
 </head>
 <body>
@@ -19,65 +28,79 @@
 <header>
   <h1>Rajarshi Roy</h1>
   <p>Postdoctoral Research Associate | Computational Biophysics</p>
-  <p>West Lafayette, Indiana, USA | <a href="mailto:royyraa@outlook.com">royyraa@outlook.com</a></p>
+  <p>West Lafayette, IN | <a href="mailto:royyraa@outlook.com" style="color:#80dfff">royyraa@outlook.com</a></p>
   <p>
-    <a href="https://www.linkedin.com/in/rajarshi-roy-855760167/">LinkedIn</a> |
-    <a href="https://scholar.google.com/citations?user=bLNNasQAAAAJ&hl=en">Google Scholar</a> |
-    <a href="https://orcid.org/0000-0002-5788-9424">ORCID</a>
+    <a href="https://www.linkedin.com/in/rajarshi-roy-855760167/" target="_blank">LinkedIn</a> |
+    <a href="https://scholar.google.com/citations?user=bLNNasQAAAAJ&hl=en" target="_blank">Google Scholar</a> |
+    <a href="https://orcid.org/0000-0002-5788-9424" target="_blank">ORCID</a>
   </p>
+  <p><a href="CV_RajarshiRoy.pdf" target="_blank" style="color:#80dfff">Download Full CV (PDF)</a></p>
 </header>
 
-<section>
-  <h2>About</h2>
-  <p>
-    I am currently a Postdoctoral Research Associate at Purdue University working with Prof. Carol Beth Post. My research focuses on conformational path sampling of proteins, kinase dynamics, and structural effects of post-translational modifications.
-  </p>
+<nav>
+  <a href="#about">About</a>
+  <a href="#education">Education</a>
+  <a href="#experience">Experience</a>
+  <a href="#publications">Publications</a>
+  <a href="#skills">Skills</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<section id="about">
+  <h2>About Me</h2>
+  <p>I am a Postdoctoral Research Associate at Purdue University working with Prof. Carol Beth Post. My work spans conformational path sampling, kinase dynamics, and the structural implications of post-translational modifications in proteins.</p>
 </section>
 
-<section>
+<section id="education">
   <h2>Education</h2>
   <ul>
-    <li><strong>Ph.D. in Biosciences and Biomedical Engineering (Computational Biophysics)</strong><br/> IIT Indore, India (2017–2022)</li>
-    <li><strong>M.Sc. in Biophysics</strong><br/> University of Kalyani, India (2014–2016)</li>
-    <li><strong>B.Sc. in Physics (Hons.)</strong><br/> University of Calcutta, India (2011–2014)</li>
+    <li>Ph.D., Biosciences & Biomedical Engineering (Computational Biophysics), IIT Indore</li>
+    <li>M.Sc., Biophysics, University of Kalyani</li>
+    <li>B.Sc., Physics (Hons.), University of Calcutta</li>
   </ul>
 </section>
 
-<section>
-  <h2>Publications</h2>
-  <p>View full list on <a href="https://scholar.google.com/citations?user=bLNNasQAAAAJ&hl=en" target="_blank">Google Scholar</a>.</p>
-</section>
-
-<section>
+<section id="experience">
   <h2>Experience</h2>
   <ul>
-    <li><strong>Postdoc Research Associate</strong> – Purdue University (2022–Present)</li>
-    <li><strong>Teaching Assistant</strong> – IIT Indore (2018–2020)</li>
-    <li><strong>Trainee</strong> – Indian Statistical Institute (2016)</li>
+    <li><strong>Postdoctoral Research Associate</strong>, Purdue University (2022–Present)</li>
+    <li><strong>Teaching Assistant</strong>, IIT Indore (3 semesters, PG-level Bioinformatics)</li>
+    <li><strong>Trainee</strong>, Indian Statistical Institute (Visual Psychophysics using MATLAB)</li>
   </ul>
 </section>
 
-<section>
+<section id="publications">
+  <h2>Selected Publications</h2>
+  <ul>
+    <li>Roy, R. et al. (2024). <i>Predicting immune response targets...</i> <a href="https://doi.org/10.1007/s00894-024-06088-8" target="_blank">DOI</a></li>
+    <li>Mukherjee A., Roy R., et al. (2024). <i>Perceptual filling-in of the blind spot...</i> <a href="https://doi.org/10.1016/j.visres.2024.108452" target="_blank">DOI</a></li>
+    <li>Poddar, S., Roy, R., Kar, P. (2024). <i>Conformational dynamics of Hepatitis C Virus E2...</i> <a href="https://doi.org/10.1080/07391102.2024.2319679" target="_blank">DOI</a></li>
+    <li>See full list on <a href="https://scholar.google.com/citations?user=bLNNasQAAAAJ&hl=en" target="_blank">Google Scholar</a></li>
+  </ul>
+</section>
+
+<section id="skills">
   <h2>Skills</h2>
   <ul>
-    <li>Programming: Python, R, FORTRAN, Shell Scripting, MATLAB, LaTeX</li>
-    <li>Tools: CHARMM, AMBER, GROMACS, NAMD, AutoDock, PyMOL, VMD</li>
-    <li>Languages: Bengali (native), English (proficient), Hindi (conversational)</li>
+    <li><strong>Programming:</strong> Python, R, FORTRAN, Shell, MATLAB, LaTeX</li>
+    <li><strong>Tools:</strong> CHARMM, AMBER, GROMACS, NAMD, AutoDock, PyMOL, VMD</li>
+    <li><strong>Languages:</strong> Bengali (native), English (proficient), Hindi (conversational)</li>
   </ul>
 </section>
 
-<section>
-  <h2>Certifications & Awards</h2>
-  <ul>
-    <li>GATE 2017 (AIR 153)</li>
-    <li>Deep Learning & NLP - NVIDIA DLI</li>
-    <li>Computational Drug Design - Schrödinger</li>
-  </ul>
+<section id="contact">
+  <h2>Contact</h2>
+  <p>Email: <a href="mailto:royyraa@outlook.com">royyraa@outlook.com</a></p>
+  <p>LinkedIn: <a href="https://www.linkedin.com/in/rajarshi-roy-855760167/">View Profile</a></p>
 </section>
 
-<footer>
-  <p>&copy; 2025 Rajarshi Roy | Built for GitHub Pages</p>
-</footer>
+<button class="toggle-btn" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+
+<script>
+  function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+  }
+</script>
 
 </body>
 </html>
