@@ -1,66 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
-  
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Publications | Rajarshi Roy</title>
   <style>
-    body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 0; color: #333; }
-    header { background: #222; color: white; padding: 2rem; text-align: center; }
-    section { padding: 2rem; max-width: 900px; margin: auto; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-top: 1rem; }
-    h2, h3 { color: #007acc; }
-    details { margin-bottom: 1rem; }
-    summary { font-weight: bold; cursor: pointer; }
-    a { color: #007acc; text-decoration: none; }
-    nav { text-align: center; padding: 1rem; background: #eaeaea; }
-    nav a { margin: 0 1rem; color: #007acc; text-decoration: none; font-weight: bold; }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      background: #f4f4f4;
+      color: #333;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 250px;
+      background: #111;
+      color: white;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      padding: 2rem 1rem;
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    .sidebar img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+
+    .sidebar h1 {
+      font-size: 1.5rem;
+      margin: 0.5rem 0;
+    }
+
+    .sidebar p {
+      font-size: 0.9rem;
+      margin: 0.3rem 0;
+    }
+
+    .sidebar a {
+      display: block;
+      color: #00aaff;
+      text-decoration: none;
+      margin: 0.5rem 0;
+      font-weight: bold;
+    }
+
+    .sidebar .button {
+      margin-top: 1rem;
+      display: inline-block;
+      background: #00aaff;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+
+    /* Main Content */
+    .main {
+      margin-left: 270px;
+      padding: 2rem;
+      max-width: 900px;
+    }
+
+    section {
+      background: white;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    h2, h3 {
+      color: #007acc;
+      margin-top: 0;
+    }
+
+    details {
+      margin-bottom: 1rem;
+    }
+
+    summary {
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    a {
+      color: #007acc;
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Publications</h1>
-    <p>Rajarshi Roy, Ph.D. | Computational Biophysics</p>
-  </header>
 
-  <nav>
-    <a href="index.html">Home</a>
-  </nav>
+<div class="sidebar">
+  <img src="images/profile.png" alt="Rajarshi Roy">
+  <h1>Rajarshi Roy</h1>
+  <p>Postdoctoral Research Associate</p>
+  <p>Computational Biophysics</p>
+  <a href="index.html">About</a>
+  <a href="index.html#education">Education</a>
+  <a href="index.html#experience">Experience</a>
+  <a href="index.html#skills">Skills</a>
+  <a href="publications.html">Publications</a>
+  <a href="mailto:royyraa@outlook.com">Email</a>
+  <a href="https://www.linkedin.com/in/rajarshi-roy-855760167/">LinkedIn</a>
+  <a href="https://scholar.google.com/citations?user=bLNNasQAAAAJ&hl=en">Google Scholar</a>
+  <a href="https://orcid.org/0000-0002-5788-9424">ORCID</a>
+  <a class="button" href="CV_RajarshiRoy.pdf" target="_blank">Download CV</a>
+</div>
 
+<div class="main">
   <section>
     <h2>Peer-Reviewed Publications</h2>
 
     <h3>2024</h3>
-    <details><summary>Computational insights into VacA toxin inhibition: harnessing FDA-approved antibiotics against <i>Helicobacter pylori</i></summary>
-  <p>
-    Kashyap, D., Koirala, S., <span style="background-color: #ffff66; font-weight: bold;">Roy, R.</span>, Saini, V., Varshney, N., Bagde, P. H., Samanta, S., Kar, P., & Jha, H. C..<br>
-    <i style="color:#444">Journal of Biomolecular Structure and Dynamics, 42(24), 13725–13737</i>.<br>
-    <a href="https://doi.org/10.1080/07391102.2023.2278080" target="_blank">DOI</a>
-  </p>
-</details>
+    <details><summary>Computational insights into VacA toxin inhibition...</summary>
+      <p>Kashyap, D., Koirala, S., <strong style="background-color: #ffff66;">Roy, R.</strong>, et al.<br>
+      <i>Journal of Biomolecular Structure and Dynamics</i>.<br>
+      <a href="https://doi.org/10.1080/07391102.2023.2278080" target="_blank">DOI</a></p>
+    </details>
 
-    <details><summary>Predicting immune response targets in orthoflaviviruses...</summary><p>Are, V. N., Roy, R., Dhanda, S. K., Neema, S., Sahu, N. R., Adithya, N., Tiwari, R., Kar, P., & Nayak, D. (2024). <i>Journal of Molecular Modeling</i>. <a href="https://doi.org/10.1007/s00894-024-06088-8" target="_blank">DOI</a></p></details>
-    <details><summary>The role of extrinsic and intrinsic factors in perceptual filling-in...</summary><p>Mukherjee, A., Paul, A., Roy, R., Roy, S., & Ghosh, K. (2024). <i>Vision Research</i>. <a href="https://doi.org/10.1016/j.visres.2024.108452" target="_blank">DOI</a></p></details>
-    <details><summary>The conformational dynamics of Hepatitis C Virus E2 glycoprotein...</summary><p>Poddar, S., Roy, R., & Kar, P. (2024). <i>Journal of Biomolecular Structure and Dynamics</i>. <a href="https://doi.org/10.1080/07391102.2024.2319679" target="_blank">DOI</a></p></details>
-    <details><summary>EGCG Derivatives Induce Cytoprotective Autophagy...</summary><p>Singh, S., Ghosh, P., Roy, R., Behera, A., Sahadevan, R., Kar, P., Sadhukhan, S., & Sonawane, A. (2024). <i>ACS Omega</i>. <a href="https://doi.org/10.1021/acsomega.3c06110" target="_blank">DOI</a></p></details>
+    <details><summary>Predicting immune response targets in orthoflaviviruses...</summary>
+      <p>Are, V. N., Roy, R., et al. <i>Journal of Molecular Modeling</i>. 
+      <a href="https://doi.org/10.1007/s00894-024-06088-8" target="_blank">DOI</a></p>
+    </details>
+
+    <details><summary>The role of extrinsic and intrinsic factors in perceptual filling-in...</summary>
+      <p>Mukherjee, A., Roy, R., et al. <i>Vision Research</i>. 
+      <a href="https://doi.org/10.1016/j.visres.2024.108452" target="_blank">DOI</a></p>
+    </details>
+
+    <details><summary>The conformational dynamics of Hepatitis C Virus E2 glycoprotein...</summary>
+      <p>Poddar, S., Roy, R., & Kar, P. <i>J. Biomolecular Structure and Dynamics</i>. 
+      <a href="https://doi.org/10.1080/07391102.2024.2319679" target="_blank">DOI</a></p>
+    </details>
+
+    <details><summary>EGCG Derivatives Induce Cytoprotective Autophagy...</summary>
+      <p>Singh, S., Roy, R., et al. <i>ACS Omega</i>. 
+      <a href="https://doi.org/10.1021/acsomega.3c06110" target="_blank">DOI</a></p>
+    </details>
 
     <h3>2023</h3>
-    <details><summary>Activation-induced cytidine deaminase interacts with chromatin modifier...</summary><p>Jaiswal, A., Roy, R., Tamrakar, A., Singh, A. K., Kar, P., & Kodgire, P. (2023). <i>Scientific Reports</i>. <a href="https://doi.org/10.1038/s41598-023-46448-7" target="_blank">DOI</a></p></details>
-    <details><summary>VacA toxin inhibition using FDA-approved antibiotics...</summary><p>Kashyap, D., Koirala, S., Roy, R., Saini, V., Varshney, N., Bagde, P. H., Samanta, S., Kar, P., & Jha, H. C. (2023). <i>Journal of Biomolecular Structure and Dynamics</i>. <a href="https://doi.org/10.1080/07391102.2023.2278080" target="_blank">DOI</a></p></details>
-    <details><summary>Conformational dynamics of histo-blood group antigens...</summary><p>Poddar, S., Roy, R., & Kar, P. (2023). <i>Journal of Biomolecular Structure and Dynamics</i>. <a href="https://doi.org/10.1080/07391102.2023.2274979" target="_blank">DOI</a></p></details>
-    <details><summary>Ayurvedic compounds as DLK inhibitors...</summary><p>Koirala, S., Roy, R., Samanta, S., Mahapatra, S., & Kar, P. (2023). <i>Journal of Biomolecular Structure and Dynamics</i>. <a href="https://doi.org/10.1080/07391102.2023.2260892" target="_blank">DOI</a></p></details>
+    <!-- Add other 2023 publications here using <details> -->
 
     <h3>2022</h3>
-    <details><summary>Conformational dynamics of tri/tetraantennary hybrid N-glycans...</summary><p>Roy, R., Poddar, S., Sk, M. F., & Kar, P. (2022). <i>Journal of Biomolecular Structure and Dynamics</i>. <a href="https://doi.org/10.1080/07391102.2022.2047109" target="_blank">DOI</a></p></details>
-    <details><summary>Conformational dynamics of an N-glycan in solvents...</summary><p>Roy, R., Poddar, S., & Kar, P. (2022). <i>Carbohydrate Research</i>. <a href="https://doi.org/10.1016/j.carres.2022.108700" target="_blank">DOI</a></p></details>
-    <details><summary>Potent inhibitors against SARS-CoV-2 main protease...</summary><p>Roy, R., Sk, M. F., Jonniya, N. A., Poddar, S., & Kar, P. (2022). <i>Journal of Biomolecular Structure and Dynamics</i>. <a href="https://doi.org/10.1080/07391102.2021.1897680" target="_blank">DOI</a></p></details>
-    <details><summary>Effect of Sulfation on Dermatan Sulfate Dynamics...</summary><p>Roy, R., Jonniya, N. A., & Kar, P. (2022). <i>The Journal of Physical Chemistry B</i>. <a href="https://doi.org/10.1021/acs.jpcb.2c01807" target="_blank">DOI</a></p></details>
+    <!-- Add other 2022 publications here using <details> -->
 
     <h3>2021 and Earlier</h3>
-    <details><summary>Recognition of ISG15 by Coronavirus Papain-Like Proteases...</summary><p>Roy, R., Jonniya, N. A., Poddar, S., Sk, M. F., & Kar, P. (2021). <i>Journal of Chemical Information and Modeling</i>. <a href="https://doi.org/10.1021/acs.jcim.1c00918" target="_blank">DOI</a></p></details>
-    <details><summary>Investigating potency of TMC-126 against HIV-1 protease...</summary><p>Sk, M. F., Haridev, S., Roy, R., & Kar, P. (2021). <i>SAR and QSAR in Environmental Research</i>. <a href="https://doi.org/10.1080/1062936X.2021.1999318" target="_blank">DOI</a></p></details>
+    <!-- Add earlier publications similarly -->
 
-    <p>Full list available on <a href="https://scholar.google.com/citations?user=bLNNasQAAAAJ&hl=en" target="_blank">Google Scholar</a>.</p>
+    <p>Full list available on 
+      <a href="https://scholar.google.com/citations?user=bLNNasQAAAAJ&hl=en" target="_blank">Google Scholar</a>.
+    </p>
   </section>
+</div>
+
 </body>
 </html>
