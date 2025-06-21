@@ -3,18 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Publications | Rajarshi Roy</title>
+  <title>Rajarshi Roy | Computational Biophysicist</title>
+  <meta name="description" content="Rajarshi Roy - Computational Biophysicist and Postdoctoral Researcher at Purdue University specializing in protein dynamics and molecular simulations.">
+  <meta name="keywords" content="Rajarshi Roy, Computational Biophysics, Purdue University, Protein Dynamics, Molecular Simulations, Postdoctoral Research, Structural Biology">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-yN5lj1kKFrTzOVNVy4sABxqBl7yUQ5IPrlmO0F3t4uwk4i7S4tYgW5aXQyUou0soHqdy9e+C2imEtJcZ41o7PQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
       display: flex;
+      flex-direction: row;
       background: #f4f4f4;
       color: #333;
     }
 
-    /* Sidebar */
     .sidebar {
       width: 250px;
       background: #111;
@@ -37,7 +40,7 @@
     }
 
     .sidebar h1 {
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       margin: 0.5rem 0;
     }
 
@@ -54,6 +57,10 @@
       font-weight: bold;
     }
 
+    .sidebar a:hover {
+      color: #66d9ff;
+    }
+
     .sidebar .button {
       margin-top: 1rem;
       display: inline-block;
@@ -62,9 +69,13 @@
       padding: 0.5rem 1rem;
       border-radius: 5px;
       text-decoration: none;
+      transition: background 0.3s;
     }
 
-    /* Main Content */
+    .sidebar .button:hover {
+      background: #0077cc;
+    }
+
     .main {
       margin-left: 270px;
       padding: 2rem;
@@ -78,44 +89,76 @@
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
-    h2, h3 {
-      color: #007acc;
+    h2 {
       margin-top: 0;
     }
 
-    details {
-      margin-bottom: 1rem;
+    ul {
+      padding-left: 1.2rem;
     }
 
-    summary {
-      font-weight: bold;
-      cursor: pointer;
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9em;
+      background: #eee;
     }
 
-    a {
-      color: #007acc;
-      text-decoration: none;
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+      }
+
+      .main {
+        margin-left: 0;
+        padding: 1rem;
+      }
     }
   </style>
 </head>
 <body>
 
-<div class="sidebar">
-  <img src="png/profile.jpg" alt="Rajarshi Roy">
-  <h1>Rajarshi Roy</h1>
-  <p>Postdoctoral Research Associate</p>
-  <p>Computational Biophysics</p>
-  <a href="index.html">About</a>
-  <a href="index.html#education">Education</a>
-  <a href="index.html#experience">Experience</a>
-  <a href="index.html#skills">Skills</a>
-  <a href="publications.html">Publications</a>
-  <a href="mailto:royyraa@outlook.com">Email</a>
-  <a href="https://www.linkedin.com/in/rajarshi-roy-855760167/">LinkedIn</a>
-  <a href="https://scholar.google.com/citations?user=bLNNasQAAAAJ&hl=en">Google Scholar</a>
-  <a href="https://orcid.org/0000-0002-5788-9424">ORCID</a>
-  <a class="button" href="CV_RajarshiRoy.pdf" target="_blank">Download CV</a>
-</div>
+  <div class="sidebar">
+    <img src="png/profile.jpg" alt="Portrait of Rajarshi Roy">
+    <h1>Rajarshi Roy</h1>
+    <p>Postdoctoral Researcher</p>
+    <p>Computational Biophysics</p>
+    <div style="margin-top: 2rem; display: flex; justify-content: center; gap: 0.5rem; flex-wrap: wrap;">
+      <a href="https://scholar.google.com/citations?user=bLNNasQAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">
+        <img src="png/gscholar.png" alt="Google Scholar" style="width: 40px; height: 40px;">
+      </a>
+      <a href="https://www.linkedin.com/in/rajarshi-roy-phd/" target="_blank" rel="noopener noreferrer">
+        <img src="png/linkdin.png" alt="LinkedIn" style="width: 40px; height: 40px;">
+      </a>
+      <a href="https://orcid.org/0000-0002-5788-9424" target="_blank" rel="noopener noreferrer">
+        <img src="png/orcid.png" alt="ORCID" style="width: 40px; height: 40px;">
+      </a>
+      <a href="https://x.com/rajariyo" target="_blank" rel="noopener noreferrer">
+        <img src="png/x.jpg" alt="X (Twitter)" style="width: 40px; height: 40px;">
+      </a>
+    </div>
+    <a href="#about">About Me</a>
+    <a href="#education">Education</a>
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="publications.html">Publications</a>
+    <a href="mailto:royyraa@outlook.com">Email</a>
+    <a class="button" href="CV_RajarshiRoy.pdf" target="_blank">Download CV</a>
+
+    <div style="position: absolute; bottom: 1rem; left: 1rem; right: 1rem; font-size: 0.8rem; color: #bbb; text-align: left;">
+      <p style="margin: 0.2rem 0;">Contact:</p>
+      <p style="margin: 0.2rem 0;">
+        <a href="mailto:royyraa@outlook.com" style="color: #66d9ff; text-decoration: none;">royyraa@outlook.com</a>
+      </p>
+      <p style="margin: 0.2rem 0;">Postdoc, Purdue University</p>
+    </div>
+  </div>
 
 <div class="main">
   <section id="hero-banner" style="
