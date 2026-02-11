@@ -6,12 +6,6 @@ export const experiences = [
 		time: "2022–Present",
 	},
 	{
-		title: "Python & PyTorch Summer Bootcamp Organizer",
-		company: "Purdue University",
-		location: "West Lafayette, Indiana, USA",
-		time: "2020–2024 (5 consecutive years)",
-	},
-	{
 		title: "Graduate Research Assistant",
 		company: "Indian Institute of Technology Indore (Prof. Parimal Kar)",
 		location: "Madhya Pradesh, India",
@@ -24,12 +18,6 @@ export const education = [
 		school: "Indian Institute of Technology Indore",
 		location: "Madhya Pradesh, India",
 		time: "2017–2022",
-	},
-	{
-		degree: "Management Program",
-		school: "Indian Institute of Management Indore",
-		location: "Madhya Pradesh, India",
-		time: "2023",
 	},
 	{
 		degree: "M.Sc. in Biophysics",
@@ -75,22 +63,6 @@ export const skills = [
   },
 ];
 export const publications = [
-  {
-    title: 'NMR-Guided Studies to Establish the Binding Interaction between a Peptoid and Protein',
-    authors: 'Muli, C.S., Xie, D., <b>Roy, R.</b>, Post, C.B., and Trader, D.J.',
-    journal: 'Journal of the American Chemical Society',
-    time: '2025',
-    link: 'https://doi.org/10.1021/jacs.5c04064',
-    abstract: 'This work establishes the binding interaction between a peptoid (KDT-11) and the proteasome subunit Rpn-13 through NMR-guided MD modeling, overcoming solubility challenges with a novel solubility tag approach.',
-  },
-  {
-    title: 'Evolutionary sequence and structural basis for the distinct conformational landscapes of Tyr and Ser/Thr kinases',
-    authors: '<b>Roy, R.</b>, Govind Kumar, V., and Post, C.B.',
-    journal: 'Purdue University / Post Lab',
-    time: '2024',
-    link: '#',
-    abstract: 'Integrating a Potts statistical energy model with molecular dynamics free energy perturbation simulations to understand the structural basis for distinct conformational landscapes of tyrosine vs serine/threonine kinases.',
-  },
   {
     title: 'Computational insights into VacA toxin inhibition: harnessing FDA-approved antibiotics against Helicobacter pylori',
     authors: 'Kashyap, D., Koirala, S., <b>Roy, R.</b>, Saini, V., Varshney, N., Bagde, P.H., Samanta, S., Kar, P., and Jha, H.C.',
