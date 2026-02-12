@@ -15,7 +15,6 @@ const navItems = [
   { href: `${template.base}/research`, label: 'Research', match: '/research' },
   { href: `${template.base}/papers`, label: 'Publications', match: '/papers' },
   { href: `${template.base}/cv`, label: 'CV', match: '/cv' },
-  { href: `${template.base}/contact`, label: 'Contact', match: '/contact' },
 ]
 ---
 <aside
@@ -60,17 +59,24 @@ const navItems = [
               </a>
             </li>
           ))}
-          {isBlogPopulated && (
-            <li>
-              <a
-                href={`${template.base}/blog/1`}
-                data-match='/blog'
-                class='nav-link text-base font-medium rounded-lg transition-all duration-200'
-              >
-                Blog
-              </a>
-            </li>
-          )}
+          <li>
+            <a
+              href={`${template.base}/blog/1`}
+              data-match='/blog'
+              class='nav-link text-base font-medium rounded-lg transition-all duration-200'
+            >
+              Blog
+            </a>
+          </li>
+          <li>
+            <a
+              href={`${template.base}/contact`}
+              data-match='/contact'
+              class='nav-link text-base font-medium rounded-lg transition-all duration-200'
+            >
+              Contact
+            </a>
+          </li>
         </ul>
       </div>
     </div>
