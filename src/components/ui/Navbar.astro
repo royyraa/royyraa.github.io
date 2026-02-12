@@ -53,7 +53,7 @@ const navItems = [
               <a
                 href={item.href}
                 data-match={item.match}
-                class='nav-link text-base font-medium rounded-lg transition-all duration-200 hover:bg-base-300/60'
+                class='nav-link text-base font-medium rounded-lg transition-all duration-200'
               >
                 {item.label}
               </a>
@@ -64,7 +64,7 @@ const navItems = [
               <a
                 href={`${template.base}/blog/1`}
                 data-match='/blog'
-                class='nav-link text-base font-medium rounded-lg transition-all duration-200 hover:bg-base-300/60'
+                class='nav-link text-base font-medium rounded-lg transition-all duration-200'
               >
                 Blog
               </a>
@@ -84,27 +84,44 @@ const navItems = [
   </div>
 </aside>
 
-<script>
+<style is:global>
+  .nav-link {
+    /* Default (inactive) hover state */
+  }
+  .nav-link:not(.nav-active):hover {
+    background-color: oklch(var(--bc) / 0.1);
+  }
+  .nav-link.nav-active {
+    background-color: oklch(var(--s) / 0.15);
+    color: oklch(var(--s));
+    font-weight: 600;
+    border-left: 3px solid oklch(var(--s));
+  }
+</style>
+
+<script is:inline>
   function updateActiveNav() {
-    const path = window.location.pathname.replace(/\/$/, '') || '/';
-    const links = document.querySelectorAll<HTMLAnchorElement>('.nav-link');
+    var path = window.location.pathname.replace(/\/$/, '') || '/';
+    var links = document.querySelectorAll('.nav-link');
 
-    links.forEach((link) => {
-      const match = link.getAttribute('data-match');
-      if (!match) return;
+    for (var i = 0; i < links.length; i++) {
+      var link = links[i];
+      var match = link.getAttribute('data-match');
+      if (!match) continue;
 
-      const isActive = path === match || (match !== '/' && path.startsWith(match));
+      var isActive = path === match || (match !== '/' && path.startsWith(match));
 
       if (isActive) {
-        link.classList.add('bg-secondary/15', 'text-secondary', 'font-semibold', 'border-l-3', 'border-secondary');
-        link.classList.remove('hover:bg-base-300/60');
+        link.classList.add('nav-active');
       } else {
-        link.classList.remove('bg-secondary/15', 'text-secondary', 'font-semibold', 'border-l-3', 'border-secondary');
-        link.classList.add('hover:bg-base-300/60');
+        link.classList.remove('nav-active');
       }
-    });
+    }
   }
 
-  // Run on initial load and after every view transition
+  // Run on every navigation (view transitions) and initial load
   document.addEventListener('astro:page-load', updateActiveNav);
+  document.addEventListener('astro:after-swap', updateActiveNav);
+  // Fallback for first load without view transitions
+  updateActiveNav();
 </script>
