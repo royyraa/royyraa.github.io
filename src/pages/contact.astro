@@ -1,0 +1,117 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { social, profile } from "@/settings";
+---
+
+<Layout title="Contact">
+  <div class="max-w-2xl mx-auto">
+    <h1 class="text-3xl font-bold mb-2">Get in Touch</h1>
+    <p class="text-base-content/60 mb-10">
+      I'm always happy to discuss research collaborations, speaking opportunities, or questions about my work.
+    </p>
+
+    <!-- Contact Cards -->
+    <div class="grid gap-4 sm:grid-cols-2">
+
+      <!-- Email -->
+      {social.email && (
+        <a href={`mailto:${social.email}`} class="card bg-base-200 hover:shadow-md transition-all duration-200 hover:-translate-y-0.5">
+          <div class="card-body p-5">
+            <div class="flex items-center gap-3">
+              <div class="bg-secondary/15 rounded-lg p-2.5">
+                <svg class="w-5 h-5 text-secondary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                </svg>
+              </div>
+              <div>
+                <p class="text-xs text-base-content/50 font-medium uppercase tracking-wide">Email</p>
+                <p class="text-sm font-semibold">{social.email}</p>
+              </div>
+            </div>
+          </div>
+        </a>
+      )}
+
+      <!-- Office -->
+      <div class="card bg-base-200">
+        <div class="card-body p-5">
+          <div class="flex items-center gap-3">
+            <div class="bg-secondary/15 rounded-lg p-2.5">
+              <svg class="w-5 h-5 text-secondary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-xs text-base-content/50 font-medium uppercase tracking-wide">Office</p>
+              <p class="text-sm font-semibold">Purdue University</p>
+              <p class="text-xs text-base-content/60">West Lafayette, IN</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Google Scholar -->
+      {social.scholar && (
+        <a href={social.scholar} target="_blank" rel="noopener noreferrer" class="card bg-base-200 hover:shadow-md transition-all duration-200 hover:-translate-y-0.5">
+          <div class="card-body p-5">
+            <div class="flex items-center gap-3">
+              <div class="bg-secondary/15 rounded-lg p-2.5">
+                <svg class="w-5 h-5 text-secondary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                </svg>
+              </div>
+              <div>
+                <p class="text-xs text-base-content/50 font-medium uppercase tracking-wide">Google Scholar</p>
+                <p class="text-sm font-semibold">View Publications →</p>
+              </div>
+            </div>
+          </div>
+        </a>
+      )}
+
+      <!-- LinkedIn -->
+      {social.linkedin && (
+        <a href={social.linkedin} target="_blank" rel="noopener noreferrer" class="card bg-base-200 hover:shadow-md transition-all duration-200 hover:-translate-y-0.5">
+          <div class="card-body p-5">
+            <div class="flex items-center gap-3">
+              <div class="bg-secondary/15 rounded-lg p-2.5">
+                <svg class="w-5 h-5 text-secondary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/>
+                </svg>
+              </div>
+              <div>
+                <p class="text-xs text-base-content/50 font-medium uppercase tracking-wide">LinkedIn</p>
+                <p class="text-sm font-semibold">Connect →</p>
+              </div>
+            </div>
+          </div>
+        </a>
+      )}
+
+    </div>
+
+    <!-- Open to Section -->
+    <div class="mt-12 p-6 bg-base-200 rounded-xl">
+      <h2 class="text-lg font-bold mb-3">I'm open to:</h2>
+      <div class="grid gap-2 sm:grid-cols-2">
+        <div class="flex items-center gap-2 text-sm">
+          <span class="text-secondary">✦</span>
+          <span>Research collaborations</span>
+        </div>
+        <div class="flex items-center gap-2 text-sm">
+          <span class="text-secondary">✦</span>
+          <span>Conference talks & seminars</span>
+        </div>
+        <div class="flex items-center gap-2 text-sm">
+          <span class="text-secondary">✦</span>
+          <span>Peer review & mentoring</span>
+        </div>
+        <div class="flex items-center gap-2 text-sm">
+          <span class="text-secondary">✦</span>
+          <span>Industry partnerships</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</Layout>
