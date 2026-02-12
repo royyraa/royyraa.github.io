@@ -10,9 +10,6 @@ const isBlogPopulated = await getCollection('blog').then(collection => collectio
 
 const { fullName, title, institute } = profile
 
-// Get current path for active page highlighting
-const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/'
-
 const navItems = [
   { href: `${template.base}/`, label: 'Home', match: '/' },
   { href: `${template.base}/research`, label: 'Research', match: '/research' },
@@ -51,35 +48,23 @@ const navItems = [
       <!-- Navigation -->
       <div class='mx-4 mt-4'>
         <ul class='space-y-1 menu menu-md'>
-          {navItems.map((item) => {
-            const isActive = currentPath === item.match || 
-              (item.match !== '/' && currentPath.startsWith(item.match))
-            return (
-              <li>
-                <a
-                  href={item.href}
-                  class:list={[
-                    'text-base font-medium rounded-lg transition-all duration-200',
-                    isActive
-                      ? 'bg-secondary/15 text-secondary font-semibold border-l-3 border-secondary'
-                      : 'hover:bg-base-300/60',
-                  ]}
-                >
-                  {item.label}
-                </a>
-              </li>
-            )
-          })}
+          {navItems.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                data-match={item.match}
+                class='nav-link text-base font-medium rounded-lg transition-all duration-200 hover:bg-base-300/60'
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
           {isBlogPopulated && (
             <li>
               <a
                 href={`${template.base}/blog/1`}
-                class:list={[
-                  'text-base font-medium rounded-lg transition-all duration-200',
-                  currentPath.startsWith('/blog')
-                    ? 'bg-secondary/15 text-secondary font-semibold border-l-3 border-secondary'
-                    : 'hover:bg-base-300/60',
-                ]}
+                data-match='/blog'
+                class='nav-link text-base font-medium rounded-lg transition-all duration-200 hover:bg-base-300/60'
               >
                 Blog
               </a>
@@ -98,3 +83,28 @@ const navItems = [
     </div>
   </div>
 </aside>
+
+<script>
+  function updateActiveNav() {
+    const path = window.location.pathname.replace(/\/$/, '') || '/';
+    const links = document.querySelectorAll<HTMLAnchorElement>('.nav-link');
+
+    links.forEach((link) => {
+      const match = link.getAttribute('data-match');
+      if (!match) return;
+
+      const isActive = path === match || (match !== '/' && path.startsWith(match));
+
+      if (isActive) {
+        link.classList.add('bg-secondary/15', 'text-secondary', 'font-semibold', 'border-l-3', 'border-secondary');
+        link.classList.remove('hover:bg-base-300/60');
+      } else {
+        link.classList.remove('bg-secondary/15', 'text-secondary', 'font-semibold', 'border-l-3', 'border-secondary');
+        link.classList.add('hover:bg-base-300/60');
+      }
+    });
+  }
+
+  // Run on initial load and after every view transition
+  document.addEventListener('astro:page-load', updateActiveNav);
+</script>
