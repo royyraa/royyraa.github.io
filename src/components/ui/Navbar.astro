@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets'
-import {profile} from '../../settings'
+import { profile } from '../../settings'
 import SocialIcons from './SocialIcons.astro'
 import ProfilePictures from '@/assets/profile.jpeg'
 import { getCollection } from 'astro:content'
@@ -8,45 +8,93 @@ import { template } from '@/settings'
 
 const isBlogPopulated = await getCollection('blog').then(collection => collection.length > 0)
 
-const {fullName, title} = profile
+const { fullName, title, institute } = profile
+
+// Get current path for active page highlighting
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/'
+
+const navItems = [
+  { href: `${template.base}/`, label: 'Home', match: '/' },
+  { href: `${template.base}/research`, label: 'Research', match: '/research' },
+  { href: `${template.base}/papers`, label: 'Papers', match: '/papers' },
+  { href: `${template.base}/cv`, label: 'CV', match: '/cv' },
+]
 ---
 <aside
-	class='px-4 pt-4 h-screen w-[20rem] bg-base-200 text-base-content flex flex-col'
+  class='px-4 pt-4 h-screen w-[20rem] bg-base-200 text-base-content flex flex-col'
 >
-	<div class='flex flex-col my-8 justify-between h-full'>
-		<div>
-			<div class='flex justify-center items-center flex-col'>
-				<Image
-					class='mask mask-circle size-44'
-					src={ProfilePictures}
-					alt={`Profile picture of ${fullName}`}
-				/>
-				<h1 class="text-lg font-black mt-8 hidden lg:block">{title} <span>{fullName}</span></h1>
-			</div>
-			<div class='mx-4 mt-16'>
-				<ul class='space-y-4 menu grow shrink menu-md overflow-y-auto'>
-					<li>
-                        <a href={`${template.base}/`} class='text-lg'>Home</a>
-					</li>
-					<li>
-                        <a href={`${template.base}/research`} class='text-lg'>Research</a>
-					</li>
-					<li>
-                        <a href={`${template.base}/papers`} class='text-lg'>Papers</a>
-					</li>
-					<li>
-                        <a href={`${template.base}/cv`} class='text-lg'>CV</a>
-                    </li>
-                    {isBlogPopulated &&
-					<li>
-                        <a href={`${template.base}/blog/1`} class='text-lg'>Blog</a>
-</li>
-                    }
-				</ul>
-			</div>
-		</div>
-		<div class='mx-4'>
-			<SocialIcons/>
-		</div>
-	</div>
+  <div class='flex flex-col my-8 justify-between h-full'>
+    <div>
+      <!-- Profile Section -->
+      <div class='flex justify-center items-center flex-col'>
+        <a href={`${template.base}/`} class='transition-opacity hover:opacity-80'>
+          <Image
+            class='mask mask-circle size-36'
+            src={ProfilePictures}
+            alt={`Profile picture of ${fullName}`}
+          />
+        </a>
+        <div class='text-center mt-5 hidden lg:block'>
+          <a href={`${template.base}/`} class='hover:text-secondary transition-colors duration-200'>
+            <h1 class='text-xl font-black leading-tight'>{fullName}</h1>
+          </a>
+          <p class='text-sm text-base-content/70 mt-1 font-medium'>{title}</p>
+          <p class='text-xs text-base-content/50 mt-0.5'>{institute}</p>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div class='mx-6 mt-8 mb-2'>
+        <hr class='border-base-300' />
+      </div>
+
+      <!-- Navigation -->
+      <div class='mx-4 mt-4'>
+        <ul class='space-y-1 menu menu-md'>
+          {navItems.map((item) => {
+            const isActive = currentPath === item.match || 
+              (item.match !== '/' && currentPath.startsWith(item.match))
+            return (
+              <li>
+                <a
+                  href={item.href}
+                  class:list={[
+                    'text-base font-medium rounded-lg transition-all duration-200',
+                    isActive
+                      ? 'bg-secondary/15 text-secondary font-semibold border-l-3 border-secondary'
+                      : 'hover:bg-base-300/60',
+                  ]}
+                >
+                  {item.label}
+                </a>
+              </li>
+            )
+          })}
+          {isBlogPopulated && (
+            <li>
+              <a
+                href={`${template.base}/blog/1`}
+                class:list={[
+                  'text-base font-medium rounded-lg transition-all duration-200',
+                  currentPath.startsWith('/blog')
+                    ? 'bg-secondary/15 text-secondary font-semibold border-l-3 border-secondary'
+                    : 'hover:bg-base-300/60',
+                ]}
+              >
+                Blog
+              </a>
+            </li>
+          )}
+        </ul>
+      </div>
+    </div>
+
+    <!-- Social Icons -->
+    <div class='mx-4'>
+      <div class='mx-6 mb-4'>
+        <hr class='border-base-300' />
+      </div>
+      <SocialIcons />
+    </div>
+  </div>
 </aside>
