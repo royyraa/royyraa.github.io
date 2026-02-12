@@ -13,8 +13,9 @@ const { fullName, title, institute } = profile
 const navItems = [
   { href: `${template.base}/`, label: 'Home', match: '/' },
   { href: `${template.base}/research`, label: 'Research', match: '/research' },
-  { href: `${template.base}/papers`, label: 'Papers', match: '/papers' },
+  { href: `${template.base}/papers`, label: 'Publications', match: '/papers' },
   { href: `${template.base}/cv`, label: 'CV', match: '/cv' },
+  { href: `${template.base}/contact`, label: 'Contact', match: '/contact' },
 ]
 ---
 <aside
@@ -85,9 +86,6 @@ const navItems = [
 </aside>
 
 <style is:global>
-  .nav-link {
-    /* Default (inactive) hover state */
-  }
   .nav-link:not(.nav-active):hover {
     background-color: oklch(var(--bc) / 0.1);
   }
@@ -119,9 +117,7 @@ const navItems = [
     }
   }
 
-  // Run on every navigation (view transitions) and initial load
   document.addEventListener('astro:page-load', updateActiveNav);
   document.addEventListener('astro:after-swap', updateActiveNav);
-  // Fallback for first load without view transitions
   updateActiveNav();
 </script>
