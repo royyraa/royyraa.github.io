@@ -1,10 +1,9 @@
-s---
+---
 import Layout from '@/layouts/Layout.astro'
-import { experiences, education, skills } from '../data/cv'
+import { experiences, education } from '../data/cv'
 import CvTimeline from '@/components/ui/CvTimeline.astro'
 
 import type { Experience, Education } from '../types/cv'
-import List from '@/components/ui/List.astro'
 
 let orderedExperiences: Experience[] = []
 let orderedEducations: Education[] = []
@@ -47,10 +46,12 @@ if (education.length > 0) {
         <section class="mb-12">
                 <div class="prose max-w-none text-base-content/80">
                         <p>
-                                My journey into computational biophysics is driven by a fascination with the physical principles underlying biological systems.
-								After training in Physics at the University of Calcutta and Biophysics at the University of Kalyani, I earned my Ph.D. from IIT Indore, 
-								specializing in molecular dynamics simulations, enhanced sampling, and free energy calculations.
-								Currently, as a Postdoctoral Research Associate at Purdue University in Prof. Carol Beth Post’s lab, I use advanced computational modeling to uncover kinase dynamics at the atomic level.
+                                My journey into computational biophysics is driven by a fascination with the physical
+                                principles underlying biological systems. After training in Physics at the University of
+                                Calcutta and Biophysics at the University of Kalyani, I earned my Ph.D. from IIT Indore,
+                                specializing in molecular dynamics simulations, enhanced sampling, and free energy calculations.
+                                Currently, as a Postdoctoral Research Associate at Purdue University in Prof. Carol Beth
+                                Post's lab, I use advanced computational modeling to uncover kinase dynamics at the atomic level.
                         </p>
                 </div>
         </section>
@@ -73,14 +74,6 @@ if (education.length > 0) {
 					Education
 				</h2>
 				<CvTimeline elements={orderedEducations} colored={true} />
-			</section>
-		)
-	}
-
-	{
-		skills.length > 0 && (
-			<section class='mb-12'>
-				<List listTitle='Skills' listItems={skills}/>
 			</section>
 		)
 	}
