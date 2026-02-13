@@ -4,6 +4,7 @@ import { profile } from "@/settings";
 import BetterIcon from "@/components/ui/BetterIcon.astro";
 import List from "@/components/ui/List.astro";
 import { skills } from "../data/cv";
+import SkillTags from "@/components/ui/SkillTags.astro";
 import {RESEARCH_ICONS} from "@/data/researchIcons";
 
 const { research_areas } = profile;
@@ -69,7 +70,7 @@ const { research_areas } = profile;
     {
       skills.length > 0 && (
         <section class="mt-12">
-          <List listTitle="Skills & Tools" listItems={skills} />
+          <SkillTags listTitle="Skills & Tools" skills={skills} />
         </section>
       )
     }
