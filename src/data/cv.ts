@@ -35,11 +35,11 @@ export const education = [
 export const skills = [
   {
     title: 'Programming & Scripting',
-    description: 'Python, PyTorch, R, FORTRAN, Shell/Bash Scripting, TCL, MATLAB, LaTeX',
+    description: 'Python, R, FORTRAN, Shell/Bash Scripting, TCL, MATLAB, LaTeX',
   },
   {
     title: 'Molecular Simulation',
-    description: 'NAMD, GROMACS, AMBER, CHARMM, AutoDock, CHARMM-GUI',
+    description: 'AMBER, CHARMM, NAMD, GROMACS, CHARMM-GUI',
   },
   {
     title: 'Enhanced Sampling & Free Energy',
