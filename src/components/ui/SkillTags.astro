@@ -1,0 +1,35 @@
+---
+interface SkillGroup {
+  title: string;
+  description: string;
+}
+
+interface Props {
+  listTitle?: string;
+  skills: SkillGroup[];
+}
+
+const { listTitle, skills } = Astro.props;
+---
+
+<section>
+  {listTitle && (
+    <h2 class="text-2xl font-bold mb-6 border-b pb-2">{listTitle}</h2>
+  )}
+  <div class="flex flex-col gap-4">
+    {skills.map((group) => (
+      <div class="flex flex-wrap items-baseline gap-x-3 gap-y-2">
+        <span class="text-sm font-semibold text-base-content/70 w-44 shrink-0">
+          {group.title}
+        </span>
+        <div class="flex flex-wrap gap-2">
+          {group.description.split(",").map((skill) => (
+            <span class="badge badge-outline badge-sm px-3 py-2 text-xs font-medium">
+              {skill.trim()}
+            </span>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
