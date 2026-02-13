@@ -1,15 +1,13 @@
 ---
 import Layout from '@/layouts/Layout.astro'
-import { experiences, education, skills, publications } from '../data/cv'
+import { experiences, education, skills } from '../data/cv'
 import CvTimeline from '@/components/ui/CvTimeline.astro'
 
-import type { Experience, Education, Publication } from '../types/cv'
+import type { Experience, Education } from '../types/cv'
 import List from '@/components/ui/List.astro'
-import PublicationsList from '@/components/ui/PublicationsList.astro'
 
 let orderedExperiences: Experience[] = []
 let orderedEducations: Education[] = []
-let orderedPublications: Publication[] = []
 
 const orderElement = <T extends { time: string }>(a: T, b: T) => {
   const presentValues = ['present', 'now', 'current', 'today']
@@ -36,20 +34,31 @@ if (education.length > 0) {
 		return orderElement(a, b)
 	})
 }
-
-if (publications.length > 0) {
-        orderedPublications = publications
-                .sort((a, b) => orderElement(a, b))
-                .slice(0, 3)
-}
 ---
 
 <Layout title="My Journey">
         <!-- Page Header -->
         <div class="mb-10">
                 <h1 class="text-3xl font-bold mb-2">My Journey</h1>
-                <p class="text-base-content/60">From physics to computational biophysics — the path that brought me here.</p>
+                <p class="text-base-content/60 text-lg">From physics to computational biophysics — the path that brought me here.</p>
         </div>
+
+        <!-- Personal Intro -->
+        <section class="mb-12">
+                <div class="prose max-w-none text-base-content/80">
+                        <p>
+                                My journey into computational biophysics began with a deep curiosity about the physical
+                                principles governing biological systems. Starting with a foundation in Physics from the
+                                University of Calcutta, I moved into Biophysics at the University of Kalyani, where I
+                                discovered the power of computational methods in understanding molecular interactions.
+                                During my Ph.D. at IIT Indore, I developed expertise in molecular dynamics simulations,
+                                enhanced sampling techniques, and free energy calculations to study complex biomolecular
+                                systems. Today, as a Postdoctoral Research Associate at Purdue University in Prof. Carol
+                                Beth Post's lab, I combine these computational approaches with structural biology methods
+                                like cryo-EM and NMR to unravel protein dynamics at the atomic level.
+                        </p>
+                </div>
+        </section>
 
         {
                 orderedExperiences.length > 0 && (
@@ -77,17 +86,6 @@ if (publications.length > 0) {
 		skills.length > 0 && (
 			<section class='mb-12'>
 				<List listTitle='Skills' listItems={skills}/>
-			</section>
-		)
-	}
-
-	{
-		orderedPublications.length > 0 && (
-			<section class='mb-12'>
-				<h2 class='text-2xl font-bold mb-6 border-b pb-2'>
-					Recent Publications (Last 3)
-				</h2>
-				<PublicationsList elements={orderedPublications}/>
 			</section>
 		)
 	}
