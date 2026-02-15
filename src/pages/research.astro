@@ -3,7 +3,9 @@ import Layout from "@/layouts/Layout.astro";
 import { profile } from "@/settings";
 import BetterIcon from "@/components/ui/BetterIcon.astro";
 import List from "@/components/ui/List.astro";
+import SkillTags from "@/components/ui/SkillTags.astro";
 import { RESEARCH_ICONS } from "@/data/researchIcons";
+import { skills } from "@/data/cv";
 
 const {
   fullName,
@@ -63,5 +65,9 @@ const {
 
     <h2 class="text-2xl font-bold mb-6">Research Impact</h2>
     <p class="text-lg mb-6">{research_impact}</p>
+
+    <div class="mt-8">
+      <SkillTags listTitle="Technical Skills" skills={skills} />
+    </div>
   </div>
 </Layout>
