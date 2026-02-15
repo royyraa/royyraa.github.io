@@ -2,7 +2,8 @@
 import Layout from "@/layouts/Layout.astro";
 import { profile } from "@/settings";
 import BetterIcon from "@/components/ui/BetterIcon.astro";
-import {RESEARCH_ICONS} from "@/data/researchIcons";
+import { RESEARCH_ICONS } from "@/data/researchIcons";
+import { skills, projects } from "@/data/cv";
 
 const { research_areas } = profile;
 ---
@@ -22,59 +23,20 @@ const { research_areas } = profile;
 
     <h2 class="text-2xl font-bold mb-6">Current Projects</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 not-prose">
-      
-      <!-- Project 1 -->
-      <div class="border border-base-300 rounded-xl p-5 flex flex-col gap-3 hover:shadow-md transition-shadow bg-base-100">
-        <div class="text-2xl">🧬</div>
-        <h3 class="font-semibold text-base leading-snug">Project Title One</h3>
-        <p class="text-sm text-base-content/70 leading-relaxed flex-1">
-          Brief description of what you are currently working on.
-        </p>
-        <div class="flex flex-wrap gap-1 pt-1">
-          <span class="badge badge-sm badge-ghost">Tag</span>
-        </div>
-      </div>
-
-      <!-- Project 2 -->
-      <div class="border border-base-300 rounded-xl p-5 flex flex-col gap-3 hover:shadow-md transition-shadow bg-base-100">
-        <div class="text-2xl">💊</div>
-        <h3 class="font-semibold text-base leading-snug">Project Title Two</h3>
-        <p class="text-sm text-base-content/70 leading-relaxed flex-1">
-          Brief description of what you are currently working on.
-        </p>
-        <div class="flex flex-wrap gap-1 pt-1">
-          <span class="badge badge-sm badge-ghost">Tag</span>
-        </div>
-      </div>
-
-      <!-- Placeholder 3 — remove comment and fill in when ready -->
-      <!--
-      <div class="border border-base-300 rounded-xl p-5 flex flex-col gap-3 hover:shadow-md transition-shadow bg-base-100">
-        <div class="text-2xl">🔬</div>
-        <h3 class="font-semibold text-base leading-snug">Project Title Three</h3>
-        <p class="text-sm text-base-content/70 leading-relaxed flex-1">
-          Brief description of what you are currently working on.
-        </p>
-        <div class="flex flex-wrap gap-1 pt-1">
-          <span class="badge badge-sm badge-ghost">Tag</span>
-        </div>
-      </div>
-      -->
-
-      <!-- Placeholder 4 — remove comment and fill in when ready -->
-      <!--
-      <div class="border border-base-300 rounded-xl p-5 flex flex-col gap-3 hover:shadow-md transition-shadow bg-base-100">
-        <div class="text-2xl">🤖</div>
-        <h3 class="font-semibold text-base leading-snug">Project Title Four</h3>
-        <p class="text-sm text-base-content/70 leading-relaxed flex-1">
-          Brief description of what you are currently working on.
-        </p>
-        <div class="flex flex-wrap gap-1 pt-1">
-          <span class="badge badge-sm badge-ghost">Tag</span>
-        </div>
-      </div>
-      -->
-
+      {
+        projects.map((project) => (
+          <div class="border border-base-300 rounded-xl p-5 flex flex-col gap-3 hover:shadow-md transition-shadow bg-base-100">
+            <div class="text-2xl">{project.icon}</div>
+            <h3 class="font-semibold text-base leading-snug">{project.title}</h3>
+            <p class="text-sm text-base-content/70 leading-relaxed flex-1">{project.description}</p>
+            <div class="flex flex-wrap gap-1 pt-1">
+              {project.tags.map((tag) => (
+                <span class="badge badge-sm badge-ghost">{tag}</span>
+              ))}
+            </div>
+          </div>
+        ))
+      }
     </div>
 
     <h2 class="text-2xl font-bold mb-6">Research Areas</h2>
@@ -101,6 +63,18 @@ const { research_areas } = profile;
               <h3 class="text-xl font-semibold mb-2">{area.title}</h3>
               <p class="text-base">{area.description}</p>
             </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <h2 class="text-2xl font-bold mb-6">Technical Skills</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12 not-prose">
+      {
+        skills.map((skill) => (
+          <div class="border border-base-300 rounded-xl p-4 bg-base-100">
+            <h3 class="font-semibold text-sm mb-2">{skill.title}</h3>
+            <p class="text-sm text-base-content/70">{skill.description}</p>
           </div>
         ))
       }
