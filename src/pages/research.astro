@@ -2,72 +2,109 @@
 import Layout from "@/layouts/Layout.astro";
 import { profile } from "@/settings";
 import BetterIcon from "@/components/ui/BetterIcon.astro";
-import List from "@/components/ui/List.astro";
-import SkillTags from "@/components/ui/SkillTags.astro";
-import { RESEARCH_ICONS } from "@/data/researchIcons";
-import { skills } from "@/data/cv";
+import {RESEARCH_ICONS} from "@/data/researchIcons";
 
-const {
-  fullName,
-  research_areas,
-  research_statement,
-  current_projects,
-  research_impact,
-} = profile;
+const { research_areas } = profile;
 ---
 
-<Layout title={`Research | ${fullName}`}>
+<Layout title="Research | Rajarshi Roy">
   <div class="prose max-w-none">
     <h1 class="text-3xl font-bold mb-8">Research Statement</h1>
 
     <div class="mb-12">
-      <p class="text-lg mb-6">{research_statement.intro}</p>
-      <p class="text-lg mb-6">{research_statement.methodology}</p>
+      <p class="text-lg mb-6">
+        My research focuses on molecular simulations and computational biophysics, with an emphasis on understanding biological systems at the atomic level.
+      </p>
+      <p class="text-lg mb-6">
+        By combining state-of-the-art simulation techniques with rigorous data analysis, I aim to uncover mechanistic insights into complex biomolecular processes with implications for drug discovery and structural biology.
+      </p>
     </div>
 
-    {research_areas.length > 0 && (
-      <>
-        <h2 class="text-2xl font-bold mb-6">Research Areas</h2>
-        <div class="grid gap-8 mb-12">
-          {research_areas.map((area) => (
-            <div class="flex gap-6 items-start">
-              <BetterIcon>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke-width="2"
-                  class="size-6 stroke-accent"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d={
-                      RESEARCH_ICONS[area.field as keyof typeof RESEARCH_ICONS]
-                        ?.path || RESEARCH_ICONS["computer-science"].path
-                    }
-                  />
-                </svg>
-              </BetterIcon>
-              <div>
-                <h3 class="text-xl font-semibold mb-2">{area.title}</h3>
-                <p class="text-base">{area.description}</p>
-              </div>
-            </div>
-          ))}
+    <h2 class="text-2xl font-bold mb-6">Current Projects</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 not-prose">
+      
+      <!-- Project 1 -->
+      <div class="border border-base-300 rounded-xl p-5 flex flex-col gap-3 hover:shadow-md transition-shadow bg-base-100">
+        <div class="text-2xl">🧬</div>
+        <h3 class="font-semibold text-base leading-snug">Project Title One</h3>
+        <p class="text-sm text-base-content/70 leading-relaxed flex-1">
+          Brief description of what you are currently working on.
+        </p>
+        <div class="flex flex-wrap gap-1 pt-1">
+          <span class="badge badge-sm badge-ghost">Tag</span>
         </div>
-      </>
-    )}
+      </div>
 
-    {current_projects.length > 0 && (
-      <List listTitle="Current Projects" listItems={current_projects} />
-    )}
+      <!-- Project 2 -->
+      <div class="border border-base-300 rounded-xl p-5 flex flex-col gap-3 hover:shadow-md transition-shadow bg-base-100">
+        <div class="text-2xl">💊</div>
+        <h3 class="font-semibold text-base leading-snug">Project Title Two</h3>
+        <p class="text-sm text-base-content/70 leading-relaxed flex-1">
+          Brief description of what you are currently working on.
+        </p>
+        <div class="flex flex-wrap gap-1 pt-1">
+          <span class="badge badge-sm badge-ghost">Tag</span>
+        </div>
+      </div>
 
-    <h2 class="text-2xl font-bold mb-6">Research Impact</h2>
-    <p class="text-lg mb-6">{research_impact}</p>
+      <!-- Placeholder 3 — remove comment and fill in when ready -->
+      <!--
+      <div class="border border-base-300 rounded-xl p-5 flex flex-col gap-3 hover:shadow-md transition-shadow bg-base-100">
+        <div class="text-2xl">🔬</div>
+        <h3 class="font-semibold text-base leading-snug">Project Title Three</h3>
+        <p class="text-sm text-base-content/70 leading-relaxed flex-1">
+          Brief description of what you are currently working on.
+        </p>
+        <div class="flex flex-wrap gap-1 pt-1">
+          <span class="badge badge-sm badge-ghost">Tag</span>
+        </div>
+      </div>
+      -->
 
-    <div class="mt-8">
-      <SkillTags listTitle="Technical Skills" skills={skills} />
+      <!-- Placeholder 4 — remove comment and fill in when ready -->
+      <!--
+      <div class="border border-base-300 rounded-xl p-5 flex flex-col gap-3 hover:shadow-md transition-shadow bg-base-100">
+        <div class="text-2xl">🤖</div>
+        <h3 class="font-semibold text-base leading-snug">Project Title Four</h3>
+        <p class="text-sm text-base-content/70 leading-relaxed flex-1">
+          Brief description of what you are currently working on.
+        </p>
+        <div class="flex flex-wrap gap-1 pt-1">
+          <span class="badge badge-sm badge-ghost">Tag</span>
+        </div>
+      </div>
+      -->
+
     </div>
+
+    <h2 class="text-2xl font-bold mb-6">Research Areas</h2>
+    <div class="grid gap-8 mb-12">
+      {
+        research_areas.map((area) => (
+          <div class="flex gap-6 items-start">
+            <BetterIcon>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke-width="2"
+                class="size-6 stroke-accent"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d={RESEARCH_ICONS[area.field as keyof typeof RESEARCH_ICONS]?.path || RESEARCH_ICONS['computer-science'].path}
+                />
+              </svg>
+            </BetterIcon>
+            <div>
+              <h3 class="text-xl font-semibold mb-2">{area.title}</h3>
+              <p class="text-base">{area.description}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
   </div>
 </Layout>
