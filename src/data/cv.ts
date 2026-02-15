@@ -1,15 +1,9 @@
 export const experiences = [
 	{
 		title: "Postdoctoral Research Associate",
-		company: "Purdue University — Post Lab (Prof. Carol Beth Post)",
-		location: "West Lafayette, Indiana, USA",
+		company: "Purdue University",
+		location: "Indiana, USA",
 		time: "2022–Present",
-	},
-	{
-		title: "Graduate Research Assistant",
-		company: "Indian Institute of Technology Indore (Prof. Parimal Kar)",
-		location: "Madhya Pradesh, India",
-		time: "2017–2022",
 	},
 ];
 export const education = [
@@ -34,33 +28,32 @@ export const education = [
 ];
 export const skills = [
   {
-    title: 'Programming & Scripting',
-    description: 'Python, R, FORTRAN, Shell/Bash Scripting, TCL, MATLAB, LaTeX',
+    title: 'Programming',
+    description: 'Python, R, FORTRAN, Shell Scripting, MATLAB, LaTeX',
   },
   {
     title: 'Molecular Simulation',
-    description: 'AMBER, CHARMM, NAMD, GROMACS, CHARMM-GUI',
-  },
-  {
-    title: 'Enhanced Sampling & Free Energy',
-    description: 'Metadynamics, Replica Exchange, Adaptive Biasing Force, MM/PBSA, Free Energy Perturbation',
-  },
-  {
-    title: 'Structural Biology',
-    description: 'Cryo-EM Flexible Fitting, Homology Modeling, NMR Data Analysis, Molecular Docking',
+    description: 'CHARMM, AMBER, GROMACS, NAMD, AutoDock',
   },
   {
     title: 'Visualization & Analysis',
-    description: 'PyMOL, VMD, Schrödinger Maestro',
+    description: 'PyMOL, VMD',
+  },
+];
+export const projects = [
+  {
+    icon: '🧬',
+    title: 'Project Title One',
+    description: 'Brief description of what you are currently working on.',
+    tags: ['Tag'],
   },
   {
-    title: 'Machine Learning & AI',
-    description: 'PyTorch, Generative AI for Biomolecular Systems, Deep Learning for Protein Dynamics',
+    icon: '💊',
+    title: 'Project Title Two',
+    description: 'Brief description of what you are currently working on.',
+    tags: ['Tag'],
   },
-  {
-    title: 'Computing & Infrastructure',
-    description: 'HPC / Cluster Computing, Linux, Git/GitHub',
-  },
+  // Add more projects here when ready — they will automatically appear as new tiles
 ];
 export const publications = [
   {
@@ -85,11 +78,11 @@ export const publications = [
     journal: 'Journal of Biomolecular Structure and Dynamics',
     time: '2024',
     link: 'https://doi.org/10.1080/07391102.2023.2252096',
-    abstract: 'This study investigates the potential of Withania somnifera extract in reducing gastric cancerous properties by inhibiting gankyrin.',
+    abstract: 'This study investigates the potential of Withania somnifera extract in reducing gastric cancerous properties by inhibiting gankyrin in cellular environments influenced by Helicobacter pylori and Epstein Barr virus.',
   },
   {
     title: 'Plant derived active compounds of ayurvedic neurological formulation, Saraswatharishta as a potential dual leucine zipper kinase inhibitor: An in-silico study',
-    authors: 'Koirala, S.#, <b>Roy, R.</b>#, Samanta, S., Mahapatra, S., and Kar, P.',
+    authors: 'Koirala, S.#, <b>Roy, R.</b>.#, Samanta, S., Mahapatra, S., and Kar, P.',
     journal: 'Journal of Biomolecular Structure and Dynamics',
     time: '2024',
     link: 'https://doi.org/10.1080/07391102.2023.2260892',
@@ -112,51 +105,19 @@ export const publications = [
     abstract: 'This study predicts immune response targets in orthoflaviviruses by combining sequence homology analysis with computational approaches.',
   },
   {
-    title: '4″-Alkyl EGCG Derivatives Induce Cytoprotective Autophagy Response by Inhibiting EGFR in Glioblastoma Cells',
+    title: '4 ″-Alkyl EGCG Derivatives Induce Cytoprotective Autophagy Response by Inhibiting EGFR in Glioblastoma Cells',
     authors: 'Singh, S., Ghosh, P., <b>Roy, R.</b>, Behera, A., Sahadevan, R., Kar, P., Sadhukhan, S., and Sonawane, A.',
     journal: 'ACS Omega',
     time: '2024',
     link: 'https://doi.org/10.1021/acsomega.3c06110',
-    abstract: 'This study demonstrates that 4″-Alkyl EGCG derivatives induce a cytoprotective autophagy response in glioblastoma cells by inhibiting EGFR signaling.',
+    abstract: 'This study demonstrates that 4 ″-Alkyl EGCG derivatives induce a cytoprotective autophagy response in glioblastoma cells by inhibiting EGFR signaling.',
   },
   {
     title: 'The conformational dynamics of Hepatitis C Virus E2 glycoprotein with the increasing number of N-glycosylation unraveled by molecular dynamics simulations',
     authors: 'Poddar, S., <b>Roy, R.</b>, and Kar, P.',
-    journal: 'Journal of Biomolecular Structure and Dynamics',
+    journal: 'ACS Omega',
     time: '2024',
     link: 'https://doi.org/10.1080/07391102.2024.2319679',
     abstract: 'This study investigates how increasing N-glycosylation affects the conformational dynamics of Hepatitis C Virus E2 glycoprotein using molecular dynamics simulations.',
-  },
-  {
-    title: 'A multiscale MD simulation and MMPBSA study of the solvent effects on the binding of Helicobacter pylori adhesin BabA to Lewis b hexasaccharide',
-    authors: '<b>Roy, R.</b>, Ghosh, B., and Kar, P.',
-    journal: 'Molecular Diversity',
-    time: '2023',
-    link: 'https://doi.org/10.1007/s11030-022-10513-6',
-    abstract: 'This study combines multiscale MD simulations with MMPBSA calculations to investigate solvent effects on the binding of H. pylori adhesin BabA to Lewis b hexasaccharide.',
-  },
-  {
-    title: 'Finding potent inhibitors against SARS-CoV-2 main protease through virtual screening, ADMET, and molecular dynamics simulation studies',
-    authors: '<b>Roy, R.</b>, Sk, M.F., Jonniya, N.A., Poddar, S., and Kar, P.',
-    journal: 'Journal of Biomolecular Structure and Dynamics',
-    time: '2022',
-    link: 'https://doi.org/10.1080/07391102.2021.1897680',
-    abstract: 'This study identifies potent inhibitors against SARS-CoV-2 main protease through virtual screening, ADMET profiling, and molecular dynamics simulations.',
-  },
-  {
-    title: 'Elucidating biophysical basis of binding of inhibitors to SARS-CoV-2 main protease by using molecular dynamics simulations and free energy calculations',
-    authors: 'Sk, M.F., <b>Roy, R.</b>, Jonniya, N.A., Poddar, S., and Kar, P.',
-    journal: 'Journal of Biomolecular Structure and Dynamics',
-    time: '2021',
-    link: 'https://doi.org/10.1080/07391102.2020.1768149',
-    abstract: 'This work elucidated the mechanism of binding of two inhibitors to SARS-CoV-2 main protease using all-atom molecular dynamics simulations and free energy calculations.',
-  },
-  {
-    title: 'Computational Investigation of Structural Dynamics of SARS-CoV-2 Methyltransferase-Stimulatory Factor Heterodimer nsp16/nsp10 Bound to the Cofactor SAM',
-    authors: 'Sk, M.F., Jonniya, N.A., <b>Roy, R.</b>, Poddar, S., and Kar, P.',
-    journal: 'Frontiers in Molecular Biosciences',
-    time: '2020',
-    link: 'https://doi.org/10.3389/fmolb.2020.590165',
-    abstract: 'This study highlights the binding mechanisms of SARS-CoV-2 nsp16 and nsp10 to identify the role of nsp10 in methyltransferase activity using extensive molecular dynamics simulations.',
   },
 ];
