@@ -42,15 +42,13 @@ export const skills = [
 ];
 export const projects = [
   {
-    icon: '🧬',
-    title: 'Project Title One',
-    description: 'Brief description of what you are currently working on.',
+    title: 'Long-Scale Kinase Dynamics',
+    description: 'Investigating the long-timescale conformational dynamics and activation mechanisms of FAK using molecular dynamics simulations.',
     tags: ['Tag'],
   },
   {
-    icon: '💊',
-    title: 'Project Title Two',
-    description: 'Brief description of what you are currently working on.',
+    title: 'Path-Based Enhanced Sampling Method',
+    description: 'Developing and applying adaptive path-based enhanced sampling methods to efficiently characterize rare biomolecular transitions.',
     tags: ['Tag'],
   },
   // Add more projects here when ready — they will automatically appear as new tiles
