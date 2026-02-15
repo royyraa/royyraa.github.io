@@ -3,76 +3,65 @@ import Layout from "@/layouts/Layout.astro";
 import { profile } from "@/settings";
 import BetterIcon from "@/components/ui/BetterIcon.astro";
 import List from "@/components/ui/List.astro";
-import { skills } from "../data/cv";
-import SkillTags from "@/components/ui/SkillTags.astro";
-import {RESEARCH_ICONS} from "@/data/researchIcons";
+import { RESEARCH_ICONS } from "@/data/researchIcons";
 
-const { research_areas } = profile;
+const {
+  fullName,
+  research_areas,
+  research_statement,
+  current_projects,
+  research_impact,
+} = profile;
 ---
 
-<Layout title="Research | Rajarshi Roy">
+<Layout title={`Research | ${fullName}`}>
   <div class="prose max-w-none">
-    <h1 class="text-3xl font-bold mb-8">Research</h1>
+    <h1 class="text-3xl font-bold mb-8">Research Statement</h1>
 
     <div class="mb-12">
-      <p class="text-lg mb-6">
-        My research lies at the intersection of computational biophysics, structural biology, and machine learning. I develop and apply advanced molecular simulation techniques to understand the dynamic behavior of proteins at the atomic level, with a particular focus on kinase signaling and regulation.
-      </p>
-      <p class="text-lg mb-6">
-        By integrating molecular dynamics simulations, enhanced sampling methods, and experimental data from cryo-EM and NMR, I aim to bridge the gap between static structural snapshots and the dynamic conformational landscapes that govern protein function.
-      </p>
+      <p class="text-lg mb-6">{research_statement.intro}</p>
+      <p class="text-lg mb-6">{research_statement.methodology}</p>
     </div>
 
-    <h2 class="text-2xl font-bold mb-6">Research Areas</h2>
-    <div class="grid gap-8 mb-12">
-      {
-        research_areas.map((area) => (
-          <div class="flex gap-6 items-start">
-            <BetterIcon>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke-width="2"
-                class="size-6 stroke-accent"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d={RESEARCH_ICONS[area.field as keyof typeof RESEARCH_ICONS]?.path || RESEARCH_ICONS['computer-science'].path}
-                />
-              </svg>
-            </BetterIcon>
-            <div>
-              <h3 class="text-xl font-semibold mb-2">{area.title}</h3>
-              <p class="text-base">{area.description}</p>
+    {research_areas.length > 0 && (
+      <>
+        <h2 class="text-2xl font-bold mb-6">Research Areas</h2>
+        <div class="grid gap-8 mb-12">
+          {research_areas.map((area) => (
+            <div class="flex gap-6 items-start">
+              <BetterIcon>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke-width="2"
+                  class="size-6 stroke-accent"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d={
+                      RESEARCH_ICONS[area.field as keyof typeof RESEARCH_ICONS]
+                        ?.path || RESEARCH_ICONS["computer-science"].path
+                    }
+                  />
+                </svg>
+              </BetterIcon>
+              <div>
+                <h3 class="text-xl font-semibold mb-2">{area.title}</h3>
+                <p class="text-base">{area.description}</p>
+              </div>
             </div>
-          </div>
-        ))
-      }
-    </div>
+          ))}
+        </div>
+      </>
+    )}
 
-    <List listTitle="Current Projects" listItems={[
-      {
-        title: "Kinase Dynamics & Regulation",
-        description: "Using molecular dynamics simulations integrated with cryo-EM and NMR data to uncover the conformational landscapes governing kinase activation and inhibition."
-      },
-      {
-        title: "Enhanced Sampling Methods",
-        description: "Applying metadynamics, replica exchange, and adaptive biasing force techniques to explore rare conformational transitions in biomolecular systems."
-      },
-      {
-        title: "AI for Biomolecular Systems",
-        description: "Leveraging deep learning and generative AI approaches with PyTorch to model and predict protein dynamics and molecular interactions."
-      }
-    ]} />
+    {current_projects.length > 0 && (
+      <List listTitle="Current Projects" listItems={current_projects} />
+    )}
 
-    {
-      skills.length > 0 && (
-        <section class="mt-12">
-          <SkillTags listTitle="Skills & Tools" skills={skills} />
-        </section>
-      )
-    }
+    <h2 class="text-2xl font-bold mb-6">Research Impact</h2>
+    <p class="text-lg mb-6">{research_impact}</p>
   </div>
 </Layout>
