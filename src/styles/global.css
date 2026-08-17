@@ -157,8 +157,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .theme-card a span { margin-left: 10px; }
 
 [data-reveal] { opacity: 1; transform: none; }
-html.js [data-reveal] { opacity: 0; transform: translate3d(0, 30px, 0); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1); }
-[data-reveal].in-view { opacity: 1; transform: translate3d(0,0,0); }
+html.js.reveal-ready [data-reveal] { opacity: 0; transform: translate3d(0, 30px, 0); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1); }
+html.js.reveal-ready [data-reveal].in-view { opacity: 1; transform: translate3d(0,0,0); }
 
 .impact { padding-block: clamp(110px, 13vw, 190px); display: grid; grid-template-columns: 1fr 1.25fr; gap: 9vw; align-items: end; }
 .impact-intro h2 { margin: 50px 0 28px; max-width: 600px; font: 400 clamp(45px, 5vw, 74px)/1.02 Georgia, serif; letter-spacing: -.04em; }
