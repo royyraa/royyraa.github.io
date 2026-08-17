@@ -1,0 +1,31 @@
+---
+const { inner = false } = Astro.props;
+const currentPath = Astro.url.pathname;
+const links = [
+  ["Research", "/research"],
+  ["Publications", "/publications"],
+  ["Software & Methods", "/software-methods"],
+  ["Service", "/professional-service"],
+  ["CV", "/cv"],
+];
+---
+
+<header class:list={["site-header", { "inner-header": inner }]} data-site-header>
+  <a class="brand" href="/" aria-label="Rajarshi Roy home">
+    <span class="brand-mark" aria-hidden="true">RR</span>
+    <span class="brand-copy">
+      <strong>Rajarshi Roy</strong>
+      <small>Computational Biophysics</small>
+    </span>
+  </a>
+  <nav id="main-navigation" aria-label="Main navigation">
+    {links.map(([label, href]) => (
+      <a href={href} aria-current={currentPath === href ? "page" : undefined}>{label}</a>
+    ))}
+  </nav>
+  <a class="contact-link" href="/contact" aria-current={currentPath === "/contact" ? "page" : undefined}>Contact <span aria-hidden="true">↗</span></a>
+  <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="main-navigation">
+    <i></i><i></i>
+  </button>
+</header>
+

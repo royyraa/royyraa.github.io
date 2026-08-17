@@ -1,24 +1,79 @@
 ---
-import Layout from '../layouts/Layout.astro'
-import { profile } from '@/settings'
-import ProfilePictures from '@/assets/profile.jpeg'
-import Hero from '@/components/ui/Hero.astro'
-import Grid from '@/components/ui/Grid.astro'
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import Authors from "../components/Authors.astro";
+import { selectedPublications } from "../data/publications";
 
-const { fullName, title, institute, research_areas } = profile
+const pillars = [
+  ["01", "Molecular Dynamics", "Protein conformational landscapes and long-timescale dynamics."],
+  ["02", "Enhanced Sampling", "Methods for capturing rare molecular transitions."],
+  ["03", "Structural Biology", "Mechanistic understanding of molecular recognition and regulation."],
+];
+const researchThemes = [
+  { index: "01", title: "Protein & Kinase Dynamics", headline: "From static structures to dynamic mechanisms.", text: "I investigate how conformational regulation, activation, and autoinhibition emerge from protein motion across molecular timescales.", topics: ["Conformational regulation", "Activation mechanisms", "Autoinhibition", "Long-timescale dynamics"], tone: "cyan" },
+  { index: "02", title: "Enhanced Sampling & Method Development", headline: "Reaching molecular events conventional simulations struggle to see.", text: "This work focuses on rare transitions, conformational pathways, and computational strategies for exploring complex energy landscapes.", topics: ["Rare transitions", "Conformational pathways", "Energy landscapes", "Method development"], tone: "amber" },
+  { index: "03", title: "Molecular Recognition & Drug Discovery", headline: "Seeing recognition as a dynamic process.", text: "I connect molecular motion, protein–ligand interactions, and structural mechanisms to questions in molecular recognition and therapeutic discovery.", topics: ["Protein–ligand interactions", "Molecular recognition", "Structural mechanisms", "Computational characterization"], tone: "coral" },
+  { index: "04", title: "Structural Glycobiology & Host–Pathogen Systems", headline: "Molecular mechanisms across complex biological interfaces.", text: "This theme preserves a broader research foundation spanning glycobiology, structural biology, and host–pathogen or viral systems.", topics: ["Glycobiology", "Host–pathogen systems", "Viral systems", "Structural biology"], tone: "green" },
+];
+const metrics = [["30", "Peer-reviewed publications"], ["15+", "First-author publications"], ["530+", "Citations"], ["12", "h-index"], ["16", "i10-index"]];
+const journey = [
+  { years: "2011–2014", degree: "BSc · Physics (Hons.)", place: "University of Calcutta" },
+  { years: "2014–2016", degree: "MSc · Biophysics", place: "University of Kalyani" },
+  { years: "2017–2022", degree: "PhD · Biosciences & Biomedical Engineering", place: "IIT Indore" },
+  { years: "Current", degree: "Postdoctoral Research", place: "Purdue University" },
+];
 ---
 
-<Layout>
-	<section class='flex items-center gap-12 border-b pb-12'>
-		<Hero
-			fullName={fullName}
-			title={title}
-			institute={institute}
-			profilePicture={ProfilePictures}
-		/>
-	</section>
+<BaseLayout>
+  <main id="main-content">
+    <SiteHeader />
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-visual" aria-hidden="true"><div class="hero-depth hero-depth-back"></div><div class="hero-depth hero-depth-protein"></div><div class="hero-depth hero-depth-front"><i></i><b></b><em></em></div><div class="hero-grain"></div></div>
+      <div class="hero-content">
+        <p class="eyebrow"><span></span> Purdue University · Postdoctoral Research Associate</p>
+        <h1 id="hero-title"><span class="name-line">Rajarshi Roy, PhD</span><span class="role-line">Computational<br />Biophysicist</span></h1>
+        <p class="hero-statement">Decoding biomolecular motion through molecular simulation, enhanced sampling, and structural biology.</p>
+        <div class="hero-actions"><a class="button-primary" href="/research">Explore research <span>↗</span></a><a class="button-quiet" href="/publications">View publications <span>→</span></a><a class="button-quiet" href="/Rajarshi_Roy_CV_Academic.pdf" target="_blank">View CV <span>→</span></a></div>
+      </div>
+      <div class="scroll-cue" aria-hidden="true"><span>Follow the motion</span><i></i></div><p class="visual-note">Illustrative placeholder · research imagery will replace this visual</p>
+    </section>
 
-	<section class='py-12 border-b'>
-		<Grid gridTitle='Research Areas' gridItems={research_areas} />
-	</section>
-</Layout>
+    <section class="philosophy section-shell" aria-labelledby="philosophy-title" data-reveal>
+      <div class="section-kicker"><span>01</span><p>Research philosophy</p></div>
+      <div class="philosophy-copy"><h2 id="philosophy-title">I study how biomolecules move, <em>communicate, and change shape.</em></h2><div class="philosophy-detail"><p>Molecular function is encoded not only by structure, but by motion. My research combines molecular dynamics, enhanced sampling, and computational structural biology to uncover mechanisms that are difficult to observe directly.</p><a href="/research">Read the research overview <span>↗</span></a></div></div>
+      <div class="pillar-list" aria-label="Research pillars">{pillars.map(([index, title, text]) => <article><span>{index}</span><h3>{title}</h3><p>{text}</p></article>)}</div>
+    </section>
+
+    <section class="profile-section section-shell" aria-labelledby="profile-title" data-reveal>
+      <div class="profile-portrait"><img src="/rajarshi-roy-headshot.webp" width="760" height="1013" alt="Portrait of Rajarshi Roy" loading="lazy" /><span>Computational biophysics · Purdue University</span></div>
+      <div class="profile-copy"><div class="section-kicker"><span>Profile</span><p>About</p></div><h2 id="profile-title">I connect molecular motion with biological mechanism.</h2><p>I am a computational biophysicist and Postdoctoral Research Associate at Purdue University. My work uses molecular dynamics, enhanced sampling, and structural analysis to investigate protein regulation, conformational transitions, molecular recognition, and glycobiological systems.</p><p>At Purdue, I work with Prof. Carol Beth Post in the Department of Medicinal Chemistry &amp; Molecular Pharmacology, studying conformational path sampling, kinase dynamics, and the structural consequences of post-translational modification.</p><div class="profile-links"><a href="/research">Research overview <span>↗</span></a><a href="/Rajarshi_Roy_CV_Academic.pdf" download>Download CV <span>↓</span></a></div></div>
+    </section>
+
+    <section class="research-stories" aria-labelledby="stories-title">
+      <div class="stories-intro section-shell" data-reveal><div class="section-kicker light"><span>02</span><p>Research themes</p></div><h2 id="stories-title">Following motion across<br />molecular scales.</h2><p>Four connected areas shape a research program built around dynamics, structure, and computation.</p></div>
+      <div class="story-list section-shell">{researchThemes.map((theme) => <article class={`research-story story-${theme.tone}`} data-reveal><div class="story-visual" aria-hidden="true"><div class="story-image"></div><div class="story-landscape"><i></i><b></b><em></em></div><span>Illustrative scientific placeholder</span></div><div class="story-copy"><p class="story-number">Theme {theme.index}</p><h3>{theme.title}</h3><h4>{theme.headline}</h4><p>{theme.text}</p><ul>{theme.topics.map((topic) => <li>{topic}</li>)}</ul><a href="/research">Explore this research theme <span>↗</span></a></div></article>)}</div>
+    </section>
+
+    <section class="impact section-shell" aria-labelledby="impact-title" data-reveal><div class="impact-intro"><div class="section-kicker"><span>03</span><p>Research impact</p></div><h2 id="impact-title">A growing body of work across computation and structure.</h2><p>Current approximate research metrics supplied for this site. Values can be updated as the research record grows.</p></div><div class="metric-grid">{metrics.map(([value, label]) => <div class="metric"><strong>{value}</strong><span>{label}</span></div>)}</div></section>
+
+    <section class="publications" aria-labelledby="publications-title"><div class="section-shell" data-reveal>
+      <div class="publications-top"><div><div class="section-kicker light"><span>04</span><p>Selected publications</p></div><h2 id="publications-title">Defining contributions,<br />carefully selected.</h2></div><p>Six representative papers trace a research program across glycobiology, enhanced sampling, molecular recognition, and host–pathogen systems.</p></div>
+      <div class="selected-publication-list">{selectedPublications.map((publication, index) => <a href={`https://doi.org/${publication.doi}`} target="_blank" rel="noreferrer" class="selected-publication"><span>{String(index + 1).padStart(2, "0")}</span><div><p>{publication.year} · {publication.journal}</p><h3>{publication.title}</h3><small><Authors authors={publication.authors} /></small></div><i aria-hidden="true">↗</i></a>)}</div>
+      <a class="section-link light-link" href="/publications">View all 30 publications <span>↗</span></a>
+    </div></section>
+
+    <section class="methods section-shell" aria-labelledby="methods-title" data-reveal><div class="methods-titleblock"><div class="section-kicker"><span>05</span><p>Software &amp; methods</p></div><h2 id="methods-title">Building tools to understand molecular motion.</h2></div><div class="method-stack">{[["Enhanced-sampling methodology", "Computational strategies for reaching rare transitions and mapping conformational pathways."], ["Simulation workflows", "Reproducible molecular-dynamics workflows spanning system preparation, sampling, and analysis."], ["Computational ecosystem", "Work involving OpenMM, CHARMM, MDAnalysis, and GPU molecular simulation, without presenting unreleased work as public software."]].map(([title, text], index) => <article class="method-row"><span>0{index + 1}</span><h3>{title}</h3><p>{text}</p></article>)}<p class="placeholder-note">Verified software names, repositories, documentation, and publication links will be added when supplied.</p><a class="section-link" href="/software-methods">Explore software &amp; methods <span>↗</span></a></div></section>
+
+    <section class="journey" id="academic-journey" aria-labelledby="journey-title"><div class="journey-inner section-shell" data-reveal><div class="journey-heading"><div class="section-kicker light"><span>06</span><p>Academic journey</p></div><h2 id="journey-title">From physics to biomolecular motion.</h2><p>A research path shaped across physics, biophysics, biomedical engineering, and computational molecular science.</p></div><ol class="timeline">{journey.map((stage, index) => <li><span class="timeline-dot">{index + 1}</span><div><small>{stage.years}</small><h3>{stage.place}</h3><p>{stage.degree}</p></div></li>)}</ol></div></section>
+
+    <section class="current-position" aria-labelledby="position-title"><div class="position-visual" aria-hidden="true"><i></i><b></b><em></em></div><div class="position-inner section-shell" data-reveal><div class="section-kicker light"><span>07</span><p>Current position</p></div><div><p>Purdue University</p><h2 id="position-title">Postdoctoral Research Associate</h2><p>Working with Prof. Carol Beth Post in the Department of Medicinal Chemistry &amp; Molecular Pharmacology, I bring molecular simulation, enhanced sampling, and structural biology together to investigate conformational path sampling, kinase dynamics, and biomolecular mechanisms.</p></div></div></section>
+
+    <section class="teaching section-shell" aria-labelledby="teaching-title" data-reveal><div class="teaching-heading"><div class="section-kicker"><span>08</span><p>Teaching &amp; mentoring</p></div><h2 id="teaching-title">Sharing computational science through practice.</h2></div><div class="teaching-grid"><article><span>Invited instruction · 2024</span><h3>Molecular Docking &amp; MD Simulations</h3><p>Two-day hands-on workshop at Woxsen University for postgraduate students, doctoral researchers, postdoctoral researchers, and early-career faculty.</p></article><article><span>Graduate teaching · 2018–2020</span><h3>Bioinformatics: Theory &amp; Laboratory</h3><p>Three semesters of teaching assistantship for postgraduate students at IIT Indore.</p></article><article class="mentoring-card"><span>Research mentoring</span><div><strong>3</strong><p>MSc dissertation students</p></div><div><strong>5</strong><p>Summer trainees</p></div></article></div></section>
+
+    <section class="service section-shell" aria-labelledby="service-title" data-reveal><div class="service-copy"><div class="section-kicker"><span>09</span><p>Professional service</p></div><h2 id="service-title">Contributing to the scientific community.</h2></div><div class="service-detail"><p>Peer review for four journals, volunteer conference organization, research mentoring, and selected scientific presentations form a growing record of academic contribution.</p><a class="section-link" href="/professional-service">View professional service <span>↗</span></a></div></section>
+
+    <section class="contact" aria-labelledby="contact-title"><div class="contact-glow" aria-hidden="true"></div><div class="contact-inner section-shell" data-reveal><p>Research collaboration · Scientific discussion · Method development</p><h2 id="contact-title">Interested in molecular motion and biomolecular mechanisms?</h2><a href="mailto:royyraa@outlook.com">Let's talk science <span>↗</span></a></div></section>
+    <SiteFooter />
+  </main>
+</BaseLayout>

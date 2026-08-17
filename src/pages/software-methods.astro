@@ -1,0 +1,14 @@
+---
+import InnerLayout from "../layouts/InnerLayout.astro";
+const tags = [
+  ["Molecular simulation", "All-atom molecular dynamics and molecular modeling across diverse biomolecular systems.", ["CHARMM", "AMBER", "GROMACS", "NAMD", "OpenMM", "AutoDock", "Schrödinger"]],
+  ["Enhanced sampling & energetics", "Approaches for exploring conformational landscapes, rare events, and molecular energetics beyond routinely accessible timescales.", ["Gaussian accelerated MD", "Metadynamics", "Replica exchange MD", "MM/PBSA", "Interaction decomposition"]],
+  ["Trajectory & structural analysis", "Analysis workflows that connect molecular ensembles with structural and mechanistic interpretation.", ["MDAnalysis", "MDTraj", "cpptraj", "FreeSASA", "Clustering", "Dimensionality reduction"]],
+  ["Scientific computing", "Programming and high-performance computing environments used for simulation, analysis, and method development.", ["Python", "FORTRAN", "R", "Shell", "Linux", "HPC / SLURM", "GPU clusters", "Anton2", "Git"]],
+];
+---
+<InnerLayout eyebrow="Software & Computational Methods" title="Methods for following molecular motion." intro="Computational approaches that connect molecular simulation, enhanced sampling, structural interpretation, and high-performance computing." accent="coral" description="Computational methods, simulation environments, and analysis tools used by Rajarshi Roy.">
+  {tags.map(([heading, body, items], index) => <article class="inner-block"><span>0{index + 1}</span><h2>{heading}</h2><div class="inner-block-body"><p>{body}</p><ul class="detail-tags">{(items as string[]).map((item) => <li>{item}</li>)}</ul></div></article>)}
+  <article class="inner-block"><span>05</span><h2>Methods in development</h2><div class="inner-block-body"><p>Ongoing method-development work will be described here after it is ready for public release. No unreleased software is presented as an available tool.</p><small>Future releases can add repositories, documentation, examples, and version history without restructuring this page.</small></div></article>
+</InnerLayout>
+

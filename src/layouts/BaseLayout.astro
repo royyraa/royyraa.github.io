@@ -1,0 +1,105 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const {
+  title = "Rajarshi Roy — Academic Website",
+  description = "Rajarshi Roy, PhD, is a computational biophysicist at Purdue University studying biomolecular motion through molecular simulation, enhanced sampling, and structural biology.",
+  image = "/rajarshi-roy-headshot.webp",
+} = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
+const fullTitle = title === "Rajarshi Roy — Academic Website" ? title : `${title} · Rajarshi Roy`;
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Rajarshi Roy",
+  honorificSuffix: "PhD",
+  jobTitle: "Postdoctoral Research Associate",
+  affiliation: { "@type": "Organization", name: "Purdue University" },
+  url: "https://royyraa.github.io",
+  sameAs: [
+    "https://scholar.google.com/citations?hl=en&user=bLNNasQAAAAJ&view_op=list_works&sortby=pubdate",
+    "https://orcid.org/0000-0002-5788-9424",
+    "https://github.com/royyraa",
+    "https://www.linkedin.com/in/rajarshi-roy-phd/",
+  ],
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#061117" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(image, Astro.site ?? Astro.url.origin)} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <title>{fullTitle}</title>
+    <script is:inline>document.documentElement.classList.add('js');</script>
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <slot />
+    <script is:inline>
+      (() => {
+        const root = document.documentElement;
+        const header = document.querySelector('[data-site-header]');
+        const button = document.querySelector('.menu-toggle');
+        const nav = document.getElementById('main-navigation');
+        const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        let ticking = false;
+        const updateScroll = () => {
+          root.style.setProperty('--scroll-y', reduced ? '0' : String(window.scrollY));
+          document.body.classList.toggle('has-scrolled', window.scrollY > 28);
+          ticking = false;
+        };
+        window.addEventListener('scroll', () => {
+          if (!ticking) { requestAnimationFrame(updateScroll); ticking = true; }
+        }, { passive: true });
+        updateScroll();
+
+        const closeMenu = () => {
+          header?.classList.remove('menu-open');
+          button?.setAttribute('aria-expanded', 'false');
+          button?.setAttribute('aria-label', 'Open navigation');
+        };
+        button?.addEventListener('click', () => {
+          const open = !header?.classList.contains('menu-open');
+          header?.classList.toggle('menu-open', open);
+          button.setAttribute('aria-expanded', String(open));
+          button.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+        });
+        nav?.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+        window.addEventListener('resize', () => { if (window.innerWidth > 1000) closeMenu(); });
+
+        const reveals = [...document.querySelectorAll('[data-reveal]')];
+        if (reduced || !('IntersectionObserver' in window)) {
+          reveals.forEach((node) => node.classList.add('in-view'));
+        } else {
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) { entry.target.classList.add('in-view'); observer.unobserve(entry.target); }
+            });
+          }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
+          reveals.forEach((node) => observer.observe(node));
+        }
+      })();
+    </script>
+  </body>
+</html>

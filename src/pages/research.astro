@@ -1,42 +1,37 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import SkillTags from "@/components/ui/SkillTags.astro";
-import { skills, projects } from "@/data/cv";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+
+const themes = [
+  { index: "01", title: "Protein & Kinase Dynamics", headline: "From static structures to dynamic mechanisms.", question: "How do protein motions connect regulated conformational states with activation and autoinhibition?", approach: "Long-timescale molecular dynamics, structural comparison, and mechanistic analysis of conformational ensembles.", topics: ["Conformational regulation", "Activation mechanisms", "Autoinhibition", "Long-timescale dynamics"], work: { title: "Phosphorylation-induced conformational dynamics and inhibition of Janus Kinase 1", doi: "10.1021/acs.jpcb.1c10733" }, tone: "cyan" },
+  { index: "02", title: "Enhanced Sampling & Method Development", headline: "Reaching events conventional simulations struggle to see.", question: "How can rare transitions and hidden molecular pathways be sampled more efficiently?", approach: "Enhanced-sampling strategies, transition coordinates, conformational pathways, and energy-landscape analysis.", topics: ["Rare transitions", "Pathway discovery", "Energy landscapes", "Computational methodology"], work: { title: "Effect of sulfation on dermatan sulfate dynamics using Gaussian accelerated MD", doi: "10.1021/acs.jpcb.2c01807" }, tone: "amber" },
+  { index: "03", title: "Molecular Recognition & Drug Discovery", headline: "Recognition is an ensemble, not a single pose.", question: "How do dynamics and molecular interactions shape recognition between proteins and ligands?", approach: "Molecular simulation and structural characterization focused on interaction networks, ensembles, and mechanistic interpretation.", topics: ["Protein–ligand interactions", "Molecular recognition", "Structural mechanisms", "Therapeutic discovery"], work: { title: "Recognition of human ISG15 by coronavirus papain-like proteases", doi: "10.1021/acs.jcim.1c00918" }, tone: "coral" },
+  { index: "04", title: "Structural Glycobiology & Host–Pathogen Systems", headline: "Complex interfaces reveal biological strategy.", question: "What molecular features govern recognition and function across glycobiological and host–pathogen interfaces?", approach: "Computational structural biology connecting molecular interactions with mechanistic questions in glycobiology and infection.", topics: ["Glycobiology", "Host–pathogen systems", "Viral systems", "Structural interfaces"], work: { title: "Comparative structural dynamics of H. pylori BabA bound to Lewis b", doi: "10.3389/fmolb.2022.852895" }, tone: "green" },
+];
 ---
 
-<Layout title="Research | Rajarshi Roy">
-  <div class="prose max-w-none">
-    <h1 class="text-3xl font-bold mb-8">Research Statement</h1>
-
-<div class="mb-6">
-  <p class="text-lg mb-2">
-    My research focuses on molecular simulations and computational biophysics, with an emphasis on understanding biological systems at the atomic level.
-  </p>
-  <p class="text-lg">
-    By combining state-of-the-art simulation techniques with rigorous data analysis, I aim to uncover mechanistic insights into complex biomolecular processes with implications for drug discovery and structural biology.
-  </p>
-</div>
-
-    <h2 class="text-2xl font-bold mb-6">Current Projects</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 not-prose">
-      {
-        projects.map((project) => (
-          <div class="border border-base-300 rounded-xl p-5 flex flex-col gap-3 hover:shadow-md transition-shadow bg-base-100">
-            <h3 class="font-semibold text-base leading-snug">{project.title}</h3>
-            <p class="text-sm text-base-content/70 leading-relaxed flex-1">{project.description}</p>
-            <div class="flex flex-wrap gap-1 pt-1">
-              {project.tags.map((tag) => (
-                <span class="badge badge-sm badge-ghost">{tag}</span>
-              ))}
-            </div>
-          </div>
-        ))
-      }
-    </div>
-
-    <div class="not-prose">
-      <SkillTags listTitle="Technical Skills" skills={skills} />
-    </div>
-
-  </div>
-</Layout>
+<BaseLayout title="Research" description="Research by Rajarshi Roy in protein dynamics, enhanced sampling, molecular recognition, structural glycobiology, and host–pathogen systems.">
+  <main class="research-page" id="main-content">
+    <SiteHeader inner />
+    <section class="research-page-hero">
+      <div class="research-hero-image" aria-hidden="true"></div>
+      <div class="section-shell research-hero-content">
+        <p class="eyebrow"><span></span> Research</p>
+        <h1>Understanding biomolecular function through <em>dynamics, structure, and computation.</em></h1>
+        <p>My research follows molecular motion across conformational landscapes to ask how biomolecules regulate, recognize, and transform.</p>
+        <a href="#research-themes">Explore the research themes <span>↓</span></a>
+      </div>
+    </section>
+    <section class="research-principle section-shell" data-reveal><span>Research principle</span><p>Structure provides a frame. Dynamics reveals the mechanism.</p></section>
+    <section class="research-detail-list section-shell" id="research-themes" aria-label="Research themes">
+      {themes.map((theme) => <article class={`research-detail detail-${theme.tone}`} data-reveal>
+        <div class="research-detail-visual" aria-hidden="true"><div class="detail-image"></div><div class="detail-orbits"><i></i><b></b><em></em></div><span>Scientific visual placeholder</span></div>
+        <div class="research-detail-copy"><p class="detail-number">{theme.index} / 04</p><h2>{theme.title}</h2><h3>{theme.headline}</h3><dl><div><dt>Scientific question</dt><dd>{theme.question}</dd></div><div><dt>Approach</dt><dd>{theme.approach}</dd></div></dl><ul>{theme.topics.map((topic) => <li>{topic}</li>)}</ul><a class="verified-slot" href={`https://doi.org/${theme.work.doi}`} target="_blank" rel="noreferrer"><span>Representative publication</span><p>{theme.work.title} <b aria-hidden="true">↗</b></p></a></div>
+      </article>)}
+    </section>
+    <section class="research-method-band"><div class="section-shell" data-reveal><p>Methods connect the questions</p><h2>Molecular dynamics · Enhanced sampling · Computational structural biology</h2><a href="/software-methods">Explore software &amp; methods <span>↗</span></a></div></section>
+    <section class="research-next section-shell" data-reveal><p>Research outputs</p><h2>Follow the work into the literature.</h2><a href="/publications">View publications <span>↗</span></a></section>
+    <SiteFooter />
+  </main>
+</BaseLayout>
