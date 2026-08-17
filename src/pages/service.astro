@@ -1,0 +1,13 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import { social } from '@/settings'
+---
+<Layout title="Professional Service | Rajarshi Roy">
+  <section class="service-hero"><p>PROFESSIONAL SERVICE</p><h1>Contributing to the scientific community.</h1><div>Peer review, mentoring, collaboration, and professional service are integral parts of an active research career.</div></section>
+  <section class="service-list">
+    <article><span>01</span><div><h2>Peer Review</h2><p>Reviewer for scientific work across computational biophysics, molecular modeling, structural biology, and related disciplines. A verified review record will be linked here as it is consolidated.</p></div></article>
+    <article><span>02</span><div><h2>Mentoring</h2><p>Research mentoring and scientific guidance for students working with computational molecular science and biomolecular simulation.</p></div></article>
+    <article><span>03</span><div><h2>Academic Profiles</h2><p><a href={social.orcid} target="_blank">ORCID ↗</a> &nbsp; · &nbsp; <a href={social.scholar} target="_blank">Google Scholar ↗</a></p></div></article>
+  </section>
+</Layout>
+<style>.service-hero{padding:9rem 0 7rem;max-width:900px}.service-hero>p{font-size:.72rem;letter-spacing:.22em;font-weight:800;opacity:.5}.service-hero h1{font-size:clamp(3rem,7vw,6.5rem);line-height:.98;letter-spacing:-.05em;font-weight:900;margin:1rem 0 2rem}.service-hero>div{font-size:1.25rem;line-height:1.75;opacity:.65;max-width:700px}.service-list{border-top:1px solid color-mix(in oklab,currentColor 12%,transparent);margin-bottom:8rem}.service-list article{display:grid;grid-template-columns:7rem 1fr;padding:3rem 0;border-bottom:1px solid color-mix(in oklab,currentColor 12%,transparent)}.service-list span{font-size:2.5rem;font-weight:900;opacity:.1}.service-list h2{font-size:2rem;font-weight:800}.service-list p{max-width:700px;line-height:1.75;opacity:.62;margin-top:1rem}@media(max-width:800px){.service-hero{padding:6rem 0 4rem}.service-list article{grid-template-columns:3rem 1fr}}</style>
