@@ -1,24 +1,122 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import { profile } from '@/settings'
-import ProfilePictures from '@/assets/profile.jpeg'
-import Hero from '@/components/ui/Hero.astro'
-import Grid from '@/components/ui/Grid.astro'
-
-const { fullName, title, institute, research_areas } = profile
+import { profile, social } from '@/settings'
+import { publications } from '@/data/cv'
 ---
 
 <Layout>
-	<section class='flex items-center gap-12 border-b pb-12'>
-		<Hero
-			fullName={fullName}
-			title={title}
-			institute={institute}
-			profilePicture={ProfilePictures}
-		/>
-	</section>
+  <div class="academic-home">
+    <section class="hero-scene min-h-[92vh] flex items-center relative overflow-hidden rounded-[2rem] px-6 md:px-14">
+      <div class="molecule molecule-a" aria-hidden="true"></div>
+      <div class="molecule molecule-b" aria-hidden="true"></div>
+      <div class="relative z-10 max-w-4xl py-24">
+        <p class="eyebrow">COMPUTATIONAL BIOPHYSICS · MOLECULAR DYNAMICS</p>
+        <h1 class="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-[0.95] mt-5">Rajarshi Roy<span class="text-secondary">, PhD</span></h1>
+        <p class="text-xl md:text-3xl mt-7 max-w-3xl text-base-content/80 leading-relaxed">Decoding biomolecular motion through molecular simulation, enhanced sampling, and structural biology.</p>
+        <p class="mt-6 text-base-content/60 text-lg">{profile.title} · {profile.institute}</p>
+        <div class="flex flex-wrap gap-3 mt-10">
+          <a class="btn btn-secondary rounded-full px-7" href="/research">Explore Research</a>
+          <a class="btn btn-outline rounded-full px-7" href="/papers">Publications</a>
+          <a class="btn btn-ghost rounded-full" href={social.scholar} target="_blank">Google Scholar ↗</a>
+        </div>
+      </div>
+      <div class="scroll-cue">SCROLL <span>↓</span></div>
+    </section>
 
-	<section class='py-12 border-b'>
-		<Grid gridTitle='Research Areas' gridItems={research_areas} />
-	</section>
+    <section class="section-pad intro-grid reveal">
+      <p class="section-kicker">RESEARCH PHILOSOPHY</p>
+      <div>
+        <h2 class="display-heading">I study how biomolecules move, communicate, and change shape.</h2>
+        <p class="lead-copy">Molecular function is encoded not only by structure, but by motion. My research combines molecular dynamics, enhanced sampling, and computational structural biology to uncover mechanisms that are difficult to observe experimentally.</p>
+      </div>
+    </section>
+
+    <section class="research-story reveal">
+      <div class="story-visual kinase-visual"><span>01</span><strong>Conformational landscapes</strong></div>
+      <div class="story-copy">
+        <p class="section-kicker">PROTEIN & KINASE DYNAMICS</p>
+        <h2>From static structures to dynamic mechanisms.</h2>
+        <p>I investigate long-timescale conformational dynamics and regulatory transitions in proteins, with current work focused on kinase activation and autoinhibition.</p>
+        <a href="/research">Explore this research →</a>
+      </div>
+    </section>
+
+    <section class="research-story reverse reveal">
+      <div class="story-visual sampling-visual"><span>02</span><strong>Rare molecular transitions</strong></div>
+      <div class="story-copy">
+        <p class="section-kicker">ENHANCED SAMPLING</p>
+        <h2>Reaching events conventional simulations struggle to see.</h2>
+        <p>I develop and apply path-based computational approaches for efficiently characterizing rare biomolecular transitions and their underlying free-energy landscapes.</p>
+        <a href="/research">Explore methods →</a>
+      </div>
+    </section>
+
+    <section class="metrics section-pad reveal">
+      <div><strong>30</strong><span>Peer-reviewed publications</span></div>
+      <div><strong>15+</strong><span>First-author papers</span></div>
+      <div><strong>530+</strong><span>Citations</span></div>
+      <div><strong>12</strong><span>h-index</span></div>
+    </section>
+
+    <section class="section-pad reveal">
+      <div class="section-head"><div><p class="section-kicker">SELECTED WORK</p><h2 class="display-heading">Recent publications</h2></div><a href="/papers">View all publications →</a></div>
+      <div class="publication-stack">
+        {publications.slice(0,4).map((paper, i) => (
+          <a class="pub-row" href={paper.link} target="_blank" rel="noopener noreferrer">
+            <span class="pub-index">0{i+1}</span><div><h3>{paper.title}</h3><p>{paper.journal} · {paper.time}</p></div><span class="pub-arrow">↗</span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="journey section-pad reveal">
+      <p class="section-kicker">ACADEMIC JOURNEY</p>
+      <h2 class="display-heading">Physics → biophysics → molecular simulation.</h2>
+      <div class="journey-line">
+        <div><span>2011–2014</span><strong>University of Calcutta</strong><small>Physics</small></div>
+        <div><span>2014–2016</span><strong>University of Kalyani</strong><small>Biophysics</small></div>
+        <div><span>2017–2022</span><strong>IIT Indore</strong><small>PhD · Biosciences & Biomedical Engineering</small></div>
+        <div><span>2022–Present</span><strong>Purdue University</strong><small>Postdoctoral Research</small></div>
+      </div>
+    </section>
+
+    <section class="closing reveal">
+      <p class="section-kicker">CONNECT</p>
+      <h2>Interested in molecular dynamics, enhanced sampling, or biomolecular mechanisms?</h2>
+      <div class="flex flex-wrap gap-3 mt-8">
+        <a class="btn btn-secondary rounded-full" href="/contact">Get in touch</a>
+        <a class="btn btn-ghost rounded-full" href={social.github} target="_blank">GitHub ↗</a>
+        <a class="btn btn-ghost rounded-full" href={social.orcid} target="_blank">ORCID ↗</a>
+      </div>
+    </section>
+  </div>
 </Layout>
+
+<script is:inline>
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduceMotion) {
+    const observer = new IntersectionObserver((entries) => entries.forEach((e) => e.isIntersecting && e.target.classList.add('is-visible')), { threshold: .12 });
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      document.querySelectorAll('.molecule').forEach((el, i) => el.style.transform = `translate3d(0, ${y * (.05 + i*.025)}px, 0)`);
+    }, { passive: true });
+  } else document.querySelectorAll('.reveal').forEach((el) => el.classList.add('is-visible'));
+</script>
+
+<style>
+  .academic-home{--line:color-mix(in oklab,currentColor 14%,transparent)}
+  .hero-scene{background:radial-gradient(circle at 72% 35%,rgba(80,170,180,.16),transparent 28%),radial-gradient(circle at 15% 80%,rgba(120,90,180,.13),transparent 28%),linear-gradient(145deg,#070b10,#111922 62%,#080b10);color:#f4f7f8}
+  .eyebrow,.section-kicker{font-size:.72rem;letter-spacing:.22em;font-weight:800;opacity:.58}
+  .molecule{position:absolute;border-radius:50%;filter:blur(1px);opacity:.6;will-change:transform}.molecule-a{width:34rem;height:34rem;right:-8rem;top:5rem;background:radial-gradient(circle at 35% 35%,rgba(111,224,218,.35),rgba(76,117,180,.08) 45%,transparent 68%);border:1px solid rgba(180,240,235,.12);box-shadow:inset 40px -30px 100px rgba(78,155,180,.12)}.molecule-b{width:18rem;height:18rem;right:24%;bottom:-7rem;background:radial-gradient(circle,rgba(165,124,220,.2),transparent 68%)}
+  .scroll-cue{position:absolute;bottom:2rem;right:2.5rem;font-size:.65rem;letter-spacing:.2em;opacity:.5}.scroll-cue span{font-size:1rem;margin-left:.5rem}
+  .section-pad{padding:8rem 1rem}.intro-grid{display:grid;grid-template-columns:1fr 3fr;gap:4rem}.display-heading{font-size:clamp(2.4rem,5vw,5rem);line-height:1.03;font-weight:800;letter-spacing:-.04em;max-width:15ch}.lead-copy{font-size:1.25rem;line-height:1.8;max-width:48rem;margin-top:2.5rem;opacity:.7}
+  .research-story{min-height:80vh;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:6rem;padding:5rem 1rem}.research-story.reverse .story-visual{order:2}.story-visual{height:34rem;border-radius:2rem;position:relative;overflow:hidden;padding:2rem;display:flex;flex-direction:column;justify-content:space-between;background:radial-gradient(circle at 65% 35%,rgba(80,190,180,.24),transparent 22%),linear-gradient(145deg,#0a1016,#15232b);color:white;box-shadow:0 30px 80px rgba(0,0,0,.15)}.sampling-visual{background:radial-gradient(ellipse at 50% 70%,rgba(168,110,210,.3),transparent 25%),radial-gradient(ellipse at 70% 25%,rgba(65,170,190,.22),transparent 25%),linear-gradient(145deg,#101017,#202333)}.story-visual span{font-size:5rem;font-weight:900;opacity:.12}.story-visual strong{font-size:1.1rem;letter-spacing:.12em;text-transform:uppercase;opacity:.65}.story-copy h2{font-size:clamp(2.3rem,4vw,4.2rem);font-weight:800;line-height:1.04;letter-spacing:-.035em;margin:1rem 0 2rem}.story-copy p:not(.section-kicker){font-size:1.15rem;line-height:1.75;opacity:.68}.story-copy a{display:inline-block;margin-top:2rem;font-weight:700}
+  .metrics{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);gap:2rem}.metrics div{display:flex;flex-direction:column}.metrics strong{font-size:clamp(3rem,6vw,6rem);line-height:1;font-weight:900;letter-spacing:-.06em}.metrics span{margin-top:1rem;opacity:.58}
+  .section-head{display:flex;justify-content:space-between;align-items:end;gap:2rem}.publication-stack{margin-top:4rem;border-top:1px solid var(--line)}.pub-row{display:grid;grid-template-columns:4rem 1fr 2rem;gap:1rem;padding:2rem .5rem;border-bottom:1px solid var(--line);transition:padding .2s,opacity .2s}.pub-row:hover{padding-left:1rem}.pub-index{opacity:.35}.pub-row h3{font-size:1.2rem;font-weight:700}.pub-row p{font-size:.9rem;margin-top:.5rem;opacity:.5}.pub-arrow{font-size:1.3rem}
+  .journey{border-top:1px solid var(--line)}.journey-line{display:grid;grid-template-columns:repeat(4,1fr);margin-top:5rem;border-top:1px solid var(--line)}.journey-line div{padding:2rem 1rem 0 0;position:relative}.journey-line div:before{content:'';position:absolute;width:.65rem;height:.65rem;border-radius:50%;background:currentColor;top:-.35rem}.journey-line span,.journey-line small{display:block;opacity:.5}.journey-line strong{display:block;font-size:1.05rem;margin:.6rem 0 .35rem}
+  .closing{margin:5rem 0 2rem;padding:7rem 4rem;border-radius:2rem;background:#0a1016;color:#f5f7f8}.closing h2{font-size:clamp(2.5rem,5vw,5rem);font-weight:800;letter-spacing:-.045em;line-height:1.03;max-width:15ch;margin-top:1rem}
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}.reveal.is-visible{opacity:1;transform:none}
+  @media(max-width:800px){.hero-scene{min-height:88vh}.molecule-a{width:22rem;height:22rem;right:-10rem}.intro-grid,.research-story{grid-template-columns:1fr;gap:2.5rem}.research-story{padding:4rem 0;min-height:auto}.research-story.reverse .story-visual{order:0}.story-visual{height:24rem}.metrics{grid-template-columns:1fr 1fr;padding:5rem 0}.section-pad{padding:5rem 0}.journey-line{grid-template-columns:1fr;border-top:0;border-left:1px solid var(--line);margin-left:.3rem}.journey-line div{padding:0 0 2.5rem 2rem}.journey-line div:before{left:-.35rem;top:.4rem}.closing{padding:4rem 1.5rem}.section-head{align-items:start;flex-direction:column}.pub-row{grid-template-columns:2.5rem 1fr 1.5rem}}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.molecule{transform:none!important}}
+</style>
