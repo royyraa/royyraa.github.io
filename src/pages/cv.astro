@@ -1,92 +1,12 @@
 ---
-import Layout from '@/layouts/Layout.astro'
-import { experiences, education, skills, publications } from '../data/cv'
-import CvTimeline from '@/components/ui/CvTimeline.astro'
-
-import type { Experience, Education, Publication } from '../types/cv'
-import List from '@/components/ui/List.astro'
-import PublicationsList from '@/components/ui/PublicationsList.astro'
-
-let orderedExperiences: Experience[] = []
-let orderedEducations: Education[] = []
-let orderedPublications: Publication[] = []
-
-const orderElement = <T extends { time: string }>(a: T, b: T) => {
-  const presentValues = ['present', 'now', 'current', 'today']
-  if (
-			presentValues.includes(
-				(a['time'] as string)?.split(' - ')[1]?.toLowerCase()
-			)
-		) {
-			// If the date is 'present', it should be the first element
-			return -1
-		}
-		const dateA = new Date((a['time'] as string)?.split(' - ')[1])
-		const dateB = new Date((b['time'] as string)?.split(' - ')[1])
-		return dateB.getTime() - dateA.getTime()
-}
-
-if (experiences.length > 0) {
-	orderedExperiences = experiences.sort((a, b) => {
-		return orderElement(a, b)
-	})
-}
-
-if (education.length > 0) {
-	orderedEducations = education.sort((a, b) => {
-		return orderElement(a, b)
-	})
-}
-
-if (publications.length > 0) {
-        orderedPublications = publications
-                .sort((a, b) => orderElement(a, b))
-                .slice(0, 3) // Show only the last 3 publications
-}
-
-
+import InnerLayout from "../layouts/InnerLayout.astro";
 ---
-
-<Layout>
-        {
-                orderedExperiences.length > 0 && (
-                        <section class='mb-12'>
-                                <h2 class='text-2xl font-bold mb-6 border-b pb-2'>
-                                        Experiences
-                                </h2>
-                                <CvTimeline elements={orderedExperiences} colored={true} />
-                        </section>
-                )
-        }
-
-	{
-		orderedEducations.length > 0 && (
-			<section class='mb-12'>
-				<h2 class='text-2xl font-bold mb-6 border-b pb-2'>
-					Education
-				</h2>
-				<CvTimeline elements={orderedEducations} colored={true} />
-			</section>
-		)
-	}
-
-
-	{
-		skills.length > 0 && (
-			<section class='mb-12'>
-				<List listTitle='Skills' listItems={skills}/>
-			</section>
-		)
-	}
-
-	{
-		orderedPublications.length > 0 && (
-			<section class='mb-12'>
-				<h2 class='text-2xl font-bold mb-6 border-b pb-2'>
-					Recent Publications (Last 3)
-				</h2>
-				<PublicationsList elements={orderedPublications}/>
-			</section>
-		)
-	}
-</Layout>
+<InnerLayout eyebrow="Curriculum Vitae" title="An interdisciplinary academic journey." intro="Training across physics, biophysics, biomedical engineering, and computational research." description="Curriculum vitae of Rajarshi Roy, PhD, computational biophysicist and postdoctoral researcher at Purdue University.">
+  <article class="inner-block"><span>01</span><h2>Download the complete CV</h2><div class="inner-block-body"><p>The full academic CV includes research experience, all publications, presentations, mentoring, grants, awards, training, certifications, and technical skills.</p><a class="download-button" href="/Rajarshi_Roy_CV_Academic.pdf" download>Download CV <span>↓</span></a></div></article>
+  <article class="inner-block"><span>02</span><h2>Purdue University</h2><div class="inner-block-body"><p>Postdoctoral Research Associate · Department of Medicinal Chemistry &amp; Molecular Pharmacology · August 2022–present</p><small>Advisor: Prof. Carol Beth Post</small></div></article>
+  <article class="inner-block"><span>03</span><h2>IIT Indore</h2><div class="inner-block-body"><p>PhD · Biosciences and Biomedical Engineering (Computational Biophysics) · 2017–2022</p><small>Thesis: Glycans in-silico — Investigating Conformational Dynamics and Interactions with Proteins · Advisor: Dr. Parimal Kar</small></div></article>
+  <article class="inner-block"><span>04</span><h2>University of Kalyani</h2><div class="inner-block-body"><p>MSc · Biophysics · 2014–2016</p><small>Dissertation advisor: Dr. Kuntal Ghosh, Indian Statistical Institute</small></div></article>
+  <article class="inner-block"><span>05</span><h2>University of Calcutta</h2><div class="inner-block-body"><p>BSc · Physics (Honors) · 2011–2014</p></div></article>
+  <article class="inner-block"><span>06</span><h2>Teaching</h2><div class="inner-block-body"><ul class="detail-list"><li>Invited Instructor · Molecular Docking &amp; MD Simulations Workshop · Woxsen University · December 2024</li><li>Graduate Teaching Assistant · Bioinformatics: Theory &amp; Laboratory · IIT Indore · 2018–2020</li></ul></div></article>
+  <article class="inner-block"><span>07</span><h2>Grant & award</h2><div class="inner-block-body"><ul class="detail-list"><li>Principal Investigator · Center for Indian Scientific Knowledge Systems grant, IIT Indore</li><li>Graduate Aptitude Test in Engineering 2017 · All-India Rank 153</li></ul><small>These details are intentionally retained on the CV page rather than promoted on the homepage.</small></div></article>
+</InnerLayout>

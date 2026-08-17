@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import Authors from "../components/Authors.astro";
+import { publications, publicationYears } from "../data/publications";
+---
+
+<BaseLayout title="Publications" description="Peer-reviewed publications by Rajarshi Roy in computational biophysics, molecular simulation, glycobiology, and molecular recognition.">
+  <main class="publication-page" id="main-content">
+    <SiteHeader inner />
+    <section class="publication-hero">
+      <div class="inner-orbits" aria-hidden="true"><i></i><b></b><em></em></div>
+      <div class="section-shell publication-hero-grid">
+        <div><p class="eyebrow"><span></span> Publications</p><h1>Research in<br /><em>the literature.</em></h1></div>
+        <div class="publication-hero-aside"><strong>30</strong><p>peer-reviewed journal articles across computational biophysics, molecular recognition, glycobiology, and structural biology.</p><a href="https://scholar.google.com/citations?hl=en&user=bLNNasQAAAAJ&view_op=list_works&sortby=pubdate" target="_blank" rel="noreferrer">Google Scholar <span>↗</span></a></div>
+      </div>
+    </section>
+    <nav class="year-nav section-shell" aria-label="Publication years"><span>Jump to year</span><div>{publicationYears.map((year) => <a href={`#year-${year}`}>{year}</a>)}</div></nav>
+    <section class="publication-archive section-shell" aria-label="Complete publication list">
+      {publicationYears.map((year) => {
+        const entries = publications.filter((publication) => publication.year === year);
+        return <section class="publication-year" id={`year-${year}`} data-reveal>
+          <header><h2>{year}</h2><span>{entries.length.toString().padStart(2, "0")} articles</span></header>
+          <ol>{entries.map((publication, index) => <li><span class="publication-count">{String(index + 1).padStart(2, "0")}</span><article><p class="publication-authors"><Authors authors={publication.authors} /></p><h3>{publication.title}</h3><p class="publication-journal"><em>{publication.journal}</em> · {publication.details}</p></article><a class="doi-link" href={`https://doi.org/${publication.doi}`} target="_blank" rel="noreferrer" aria-label={`Open DOI for ${publication.title}`}><span>DOI</span><b aria-hidden="true">↗</b></a></li>)}</ol>
+        </section>;
+      })}
+      <p class="equal-note"># Equal contribution. Publication details and DOI destinations were checked against authoritative journal and indexing records.</p>
+    </section>
+    <section class="inner-next"><div class="section-shell"><p>Continue exploring</p><div><a href="/research">Research ↗</a><a href="/software-methods">Methods ↗</a><a href="/contact">Contact ↗</a></div></div></section>
+    <SiteFooter />
+  </main>
+</BaseLayout>

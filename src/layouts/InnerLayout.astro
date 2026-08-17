@@ -1,0 +1,20 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+
+const { eyebrow, title, intro, accent = "cyan", description = intro } = Astro.props;
+---
+
+<BaseLayout title={eyebrow} description={description}>
+  <main class={`inner-page inner-${accent}`} id="main-content">
+    <SiteHeader inner />
+    <section class="inner-hero">
+      <div class="inner-orbits" aria-hidden="true"><i></i><b></b><em></em></div>
+      <div class="section-shell inner-hero-content"><p class="eyebrow"><span></span> {eyebrow}</p><h1>{title}</h1><p>{intro}</p></div>
+    </section>
+    <section class="inner-content section-shell" data-reveal><slot /></section>
+    <section class="inner-next"><div class="section-shell"><p>Continue exploring</p><div><a href="/research">Research ↗</a><a href="/publications">Publications ↗</a><a href="/contact">Contact ↗</a></div></div></section>
+    <SiteFooter />
+  </main>
+</BaseLayout>

@@ -1,0 +1,6 @@
+---
+const { authors } = Astro.props;
+const parts = String(authors).split(/(Roy, R\.?#?)/g);
+---
+{parts.map((part) => part.startsWith("Roy, R.") ? <strong>{part}</strong> : part)}
+
