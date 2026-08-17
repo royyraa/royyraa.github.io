@@ -1,42 +1,39 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import SkillTags from "@/components/ui/SkillTags.astro";
-import { skills, projects } from "@/data/cv";
+import Layout from '@/layouts/Layout.astro'
+import { profile } from '@/settings'
 ---
-
 <Layout title="Research | Rajarshi Roy">
-  <div class="prose max-w-none">
-    <h1 class="text-3xl font-bold mb-8">Research Statement</h1>
+  <section class="research-hero">
+    <p>RESEARCH</p>
+    <h1>Understanding biomolecular function through dynamics, structure, and computation.</h1>
+    <div>{profile.research_statement.intro} {profile.research_statement.methodology}</div>
+  </section>
 
-<div class="mb-6">
-  <p class="text-lg mb-2">
-    My research focuses on molecular simulations and computational biophysics, with an emphasis on understanding biological systems at the atomic level.
-  </p>
-  <p class="text-lg">
-    By combining state-of-the-art simulation techniques with rigorous data analysis, I aim to uncover mechanistic insights into complex biomolecular processes with implications for drug discovery and structural biology.
-  </p>
-</div>
+  <section class="theme-stack">
+    {profile.research_areas.map((area, i) => (
+      <article class="theme-block">
+        <div class="theme-number">0{i+1}</div>
+        <div class="theme-visual" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div class="theme-copy">
+          <p>{area.field}</p>
+          <h2>{area.title}</h2>
+          <div>{area.description}</div>
+        </div>
+      </article>
+    ))}
+  </section>
 
-    <h2 class="text-2xl font-bold mb-6">Current Projects</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 not-prose">
-      {
-        projects.map((project) => (
-          <div class="border border-base-300 rounded-xl p-5 flex flex-col gap-3 hover:shadow-md transition-shadow bg-base-100">
-            <h3 class="font-semibold text-base leading-snug">{project.title}</h3>
-            <p class="text-sm text-base-content/70 leading-relaxed flex-1">{project.description}</p>
-            <div class="flex flex-wrap gap-1 pt-1">
-              {project.tags.map((tag) => (
-                <span class="badge badge-sm badge-ghost">{tag}</span>
-              ))}
-            </div>
-          </div>
-        ))
-      }
+  <section class="approach">
+    <p>RESEARCH APPROACH</p>
+    <h2>From trajectories to mechanisms.</h2>
+    <div class="approach-grid">
+      <div><strong>Simulation</strong><span>Atomistic molecular dynamics and high-performance simulation workflows.</span></div>
+      <div><strong>Sampling</strong><span>Enhanced-sampling strategies for rare transitions and conformational pathways.</span></div>
+      <div><strong>Analysis</strong><span>Structural, dynamical, and statistical analysis of complex molecular trajectories.</span></div>
+      <div><strong>Mechanism</strong><span>Connecting molecular motion to regulation, recognition, and biological function.</span></div>
     </div>
-
-    <div class="not-prose">
-      <SkillTags listTitle="Technical Skills" skills={skills} />
-    </div>
-
-  </div>
+  </section>
 </Layout>
+<style>
+  .research-hero{padding:9rem 0 8rem;max-width:1000px}.research-hero>p,.approach>p,.theme-copy>p{font-size:.72rem;letter-spacing:.22em;font-weight:800;opacity:.5;text-transform:uppercase}.research-hero h1{font-size:clamp(3.2rem,7vw,7rem);line-height:.96;letter-spacing:-.055em;font-weight:900;margin:1rem 0 2.5rem;max-width:13ch}.research-hero>div{font-size:1.22rem;line-height:1.8;opacity:.64;max-width:760px}.theme-stack{display:flex;flex-direction:column;gap:1.5rem;padding-bottom:8rem}.theme-block{min-height:32rem;display:grid;grid-template-columns:5rem 1fr 1fr;gap:2rem;align-items:center;border-top:1px solid color-mix(in oklab,currentColor 12%,transparent);padding:3rem 0}.theme-number{font-size:3rem;font-weight:900;opacity:.1;align-self:start}.theme-visual{height:25rem;border-radius:1.75rem;background:linear-gradient(145deg,#081015,#16242b);position:relative;overflow:hidden}.theme-visual span{position:absolute;border-radius:999px;border:1px solid rgba(160,230,225,.18);background:radial-gradient(circle at 35% 35%,rgba(105,220,210,.27),rgba(83,101,180,.05) 55%,transparent 70%)}.theme-visual span:nth-child(1){width:13rem;height:13rem;left:16%;top:17%}.theme-visual span:nth-child(2){width:9rem;height:9rem;right:13%;bottom:17%}.theme-visual span:nth-child(3){width:4rem;height:4rem;right:24%;top:14%}.theme-copy{padding:2rem}.theme-copy h2{font-size:clamp(2.1rem,4vw,4.2rem);line-height:1.02;letter-spacing:-.04em;font-weight:850;margin:1rem 0 1.5rem}.theme-copy>div{font-size:1.12rem;line-height:1.75;opacity:.62}.approach{padding:8rem 0;border-top:1px solid color-mix(in oklab,currentColor 12%,transparent)}.approach h2{font-size:clamp(2.7rem,5vw,5rem);font-weight:850;letter-spacing:-.045em;margin:1rem 0 4rem}.approach-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}.approach-grid div{padding:2rem;border:1px solid color-mix(in oklab,currentColor 12%,transparent);border-radius:1.25rem;min-height:12rem;display:flex;flex-direction:column}.approach-grid strong{font-size:1.2rem}.approach-grid span{margin-top:auto;line-height:1.6;opacity:.55}@media(max-width:850px){.research-hero{padding:6rem 0 5rem}.theme-block{grid-template-columns:2.5rem 1fr;gap:1rem}.theme-visual{grid-column:2;height:20rem}.theme-copy{grid-column:2;padding:0}.approach-grid{grid-template-columns:1fr 1fr}}@media(max-width:550px){.approach-grid{grid-template-columns:1fr}}
+</style>
